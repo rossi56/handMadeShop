@@ -1,33 +1,9 @@
-//ANIMATION BEFORE ET AFTER IMAGES ROMAN
-@mixin anim {
-    content: ' ';
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    right: 30px;
-    bottom: 30px;
-    transition: transform 0.35s ease-in-out;
-}
-
-// DEGRADE DE COULEUR
-@mixin deg {
-    background: #f9cd5c;
-    background: -moz-linear-gradient(-45deg, #f9cd5c 9%, #207cca 100%, #2989d8 100%, #7db9e8 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #f9cd5c 9%, #207cca 100%, #2989d8 100%, #7db9e8 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(135deg, #f9cd5c 9%, #207cca 100%, #2989d8 100%, #7db9e8 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9cd5c', endColorstr='#7db9e8', GradientType=1);
-    /* IE6-9 fallback on horizontal gradient */
-}
-
 //Titres h3 
 @mixin h3 {
     color: white;
     font-family: 'Cookie', cursive;
     font-size: 55px;
-    text-shadow: 1px 1px 0 $colorSite, 2px 2px 0 $colorSite, 3px 3px 0 $colorSite, 4px 4px 0 $colorSite, 5px 5px 0 $colorSite, 6px 6px 0 $colorSite, 7px 7px 0 $colorSite;
+    text-shadow: 1px 1px 0 $colorSite, 2px 2px 0 $colorSite, 3px 3px 0 $colorSite, 4px 4px 0 $colorSite, 5px 5px 0 $colorSite;
     @media screen and (max-width: 48em) {
         width: 100%;
         font-size: 35px;
@@ -38,10 +14,98 @@
     }
 }
 
-//Titres h4 
-@mixin h4 {
-    color: white;
-    font-size: 35px;
+@mixin h2 {
+    font-family: 'Londrina Sketch', cursive;
+    color: $colorSite;
+    font-size: 45px;
+    text-align: center;
+    @media screen and (max-width: 48em) {
+		font-size: 35px;
+	}
+}
+
+@mixin comments {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .formulaire-chapter {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        align-self: center;
+        margin-bottom: -300px;
+        textarea {
+            text-align: center;
+            color: $colorSite;
+            border: 1px solid rgba(128, 128, 128, 0.555);
+            height: 100px;
+            margin-top: -50px;
+        }
+        input {
+            margin-top: 25px;
+            padding: 15px 25px;
+            border: 1px solid $colorSite;
+            background-color: white;
+            color: $colorSite;
+            transition: 0.35s ease-in-out;
+            &:hover {
+                color: white;
+                background-color: $colorSite;
+            }
+        }
+    }
+    .fa-star {
+        color: rgb(240, 187, 12);
+        margin-right: 2%;
+    }
+    .commentaires {
+        width: 40%;
+        a {
+            text-align: center;
+            margin-top: 20px;
+            display: block;
+            text-decoration: none;
+            color: $colorSite;
+            border: 1px solid $colorSite;
+            width: 60%;
+            padding: 10px 10px;
+            transition: .45s ease-in-out;
+            &:hover {
+                background-color: $colorSite;
+                color: white;
+            }
+        }
+        .comment {
+            color: rgb(99, 93, 93);
+            font-size: 16px;
+            margin-bottom: 25px;
+            img {
+                width: 100px;
+                border-radius: 50%;
+            }
+          
+        }
+        .date {
+            color: rgb(134, 129, 129);
+            font-size: 18px;
+            img {
+                width: 50px;
+                margin-right: 2%;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    h2 {
+        font-family: "Lato", cursive;
+        font-size: 22px;
+        font-weight: bold;
+        color: $colorSite;
+    }
+    hr {
+        width: 100%;
+        background-color: $colorSite;
+        margin-bottom: 50px;
+    }
 }
 
 @mixin button {
@@ -53,17 +117,32 @@
     border: 1px solid white;
     padding: 15px 35px;
     cursor: pointer;
+    -webkit-transition: 0.25s ease-in-out;
     transition: 0.25s ease-in-out;
-    top: 50%;
-    left: 25%;
+    top: 70%;
+    left: 50%;
     font-family: 'Cookie', cursive;
     font-size: 35px;
-    border-radius: 15px;
+    -webkit-transform: translate(-50%, 50%);
     transform: translate(-50%, 50%);
+    
 }
 
-@mixin buttonHover {
-    padding: 15px 55px;
+
+@mixin btn {
+    align-self: center;
+    margin-bottom: 50px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
     color: $colorSite;
     border: 1px solid $colorSite;
+    width: 30%;
+    padding: 10px 10px;
+    transition: .45s ease-in-out;
+    &:hover {
+        background-color: $colorSite;
+        border: none;
+        color: white;
+    }
 }

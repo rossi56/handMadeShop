@@ -1,0 +1,16 @@
+{
+    "name": "rossi/projet5",
+    "description": "Ma p'tite boutique - vente de produits en ligne",
+    "authors": [
+        {
+            "name": "Rossi",
+            "email": "rossi56000@gitlab.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Rossi\\": "Projet5/"
+        }
+    },
+    "require": {}
+}

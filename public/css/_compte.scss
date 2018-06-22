@@ -1,81 +1,211 @@
-.articles {
-    margin-top: 250px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    h3 {
-        @include h3;
-        text-align: center;
-        color: white;
-        font-family: 'Cookie', cursive;
-        font-size: 65px;
-        height: 80px;
-        width: 100%;
-        text-shadow: 1px 1px 0 $colorSite, 2px 2px 0 $colorSite, 3px 3px 0 $colorSite, 4px 4px 0 $colorSite, 5px 5px 0 $colorSite, 6px 6px 0 $colorSite, 7px 7px 0 $colorSite;
-    }
-    p {
-        color: white;
-        font-family: 'Satisfy', cursive;
-        span {
-            text-shadow: 1px 1px 0 $colorSite, 2px 2px 0 $colorSite, 3px 3px 0 $colorSite;
-        }
-        @media screen and (max-width: 48em) {
-            width: 100%;
-            font-size: 25px;
-        }
-        @media screen and (max-width: 22.5em) {
-            width: 100%;
-            font-size: 25px;
-        }
-    }
-    .avatar {
-        margin-bottom: 50px;
-        align-self: center;
-        height: 200px;
-        width: 200px;
-    }
-    a {
-        font-family: 'Life', cursive;
-        font-size: 20px;
-        border-radius: 15px;
-        color: white;
-        border: 1px solid white;
-        padding: 15px 20px;
-        &:hover {
-            border: 1px solid $colorSite;
-            color: $colorSite;
-        }
-    }
-}
-
-h3 {
-    margin-bottom: 50px;
-}
-
-.commentaires {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.compte {
     width: 100%;
-    .date {
-        font-family: 'Satisfy', cursive;
-        font-size: 30px;
-        align-content: flex-start;
-        color: white;
-        margin-bottom: 100px;
-        img {
-            margin-right: 50px;
-            width: 60px;
+    display: flex;
+    flex-direction: column;
+    h3 {
+        text-align: center;
+        font-size: 35px;
+        font-family: 'Lato', cursive;
+        margin-top: 75px;
+        margin-bottom: 50px;
+    }
+    .articles {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        .space {
+            width: 50%;
+            @media screen and (max-width: 22.5em), (max-width: 36em), (max-width: 48em) {
+                width: 100%;
+                font-size: 18px;
+            }
+            p {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+            font-size: 25px;
+            margin-bottom: 75px;
+            border: 1px solid $colorSite;
+            padding: 5%;
+            li {
+                font-size: 20px;
+                .fa-edit,
+                .fa-chart-bar,
+                .fa-plus-square,
+                .fa-money-bill-alt,
+                .fa-cart-plus,
+                .fa-eye {
+                    color: rgb(247, 97, 10);
+                    font-size: 25px;
+                    margin-top: 30px;
+                    margin-right: 3%;
+                }
+            }
+        }
+        .profil {
+            text-align: center;
+            font-size: 25px;
+            margin-bottom: 50px;
+            span {
+                display: block;
+                font-weight: bold;
+                text-decoration: underline;
+                margin-bottom: 15px;
+                color: rgb(126, 118, 118);
+            }
+            li {
+                margin-bottom: 15px;
+                color: $colorSite;
+            }
+        }
+        .avatar {
+            margin-bottom: 50px;
+            align-self: center;
+            width: 100px;
+        }
+        a {
+            display: block;
+            margin-bottom: 75px;
+            font-family: 'Lato', cursive;
+            font-size: 20px;
+            color: $colorSite;
+            border: 1px solid $colorSite;
+            padding: 15px 20px;
+            text-decoration: none;
+            transition: 0.35s ease-in-out;
+            &:hover {
+                background-color: $colorSite;
+                color: white;
+                border: none;
+            }
         }
     }
-    .comment {
-        background-color: rgba(255, 255, 255, 0.466);
-        border-radius: 15px;
-        min-height: 150px;
-        width: 50%;
-        border: 1px solid white;
-        font-size: 25px;
-        font-family: 'Satisfy', cursive;
-        color: white;
+    .fa-cart-plus,
+    .fa-edit,
+    .fa-plus-square,
+    .fa-minus-square {
+        margin-right: 5%;
+        font-size: 20px;
+    }
+    .commentaires {
+        width: 100%;
+        
+        img {
+            width: 100px;
+            margin-top: 15px;
+            border-radius: 50%;
+        }
+        h3 {
+            text-align: center;
+            font-size: 35px;
+            font-family: 'Lato', cursive;
+            margin-bottom: 150px;
+            margin-top: 100px;
+        }
+        .date {
+            color: rgb(134, 129, 129);
+            font-size: 18px;
+            @media screen and (max-width: 22.5em) {
+            font-size: 16px;
+            }
+            a {
+                color: $colorSite;
+                &:hover {
+                    color: orangered;
+                }
+            }
+        }
+    }
+    .caddie {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 70px;
+        a {
+            color: $colorSite;
+            &:hover {
+                color: white;
+            }
+        }
+        .fa-minus-square,
+        .fa-plus-square {
+            color: $colorSite;
+            margin-left: 3%;
+            margin-right: 3%;
+        }
+        h3 {
+            text-align: center;
+            font-size: 35px;
+            font-family: 'Lato', cursive;
+            margin-bottom: 150px;
+            margin-top: 75px;
+        }
+        img {
+            width: 60px;
+            margin-left: 3%;
+            border-radius: 50%;
+        }
+        span {
+            font-weight: bold;
+        }
+        .erase {
+            display: block;
+            text-decoration: none;
+            color: $colorSite;
+            border: 1px solid $colorSite;
+            padding: 10px 10px;
+            text-align: center;
+            margin-top: 2%;
+            width: 40%;
+            &:hover {
+                color: white;
+                background-color: red;
+                transition: 0.35s ease-in-out;
+                border: none;
+            }
+        }
+        .access {
+            &:hover {
+                color: white;
+                background-color: rgb(85, 223, 85);
+                transition: 0.35s ease-in-out;
+                border: none;
+            }
+        }
+    }
+    .caddie.xl {
+        @media screen and (max-width: 22.5em) {
+            display: none;
+        }
+    }
+    .caddieResponsive {
+        display: none;
+        @media screen and (max-width: 22.5em) {
+            display: block;
+        }
+    }
+    .empty {
+        margin-top: 160px;
+        font-family: 'Lato', cursive;
+        font-size: 45px;
+        padding: 25px;
+        opacity: 1;
+        animation: pulse 0.55s infinite ease-in-out;
+        @media screen and (max-width: 22.5em), (max-width: 36em) {
+            font-size: 25px;
+        }
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 12px rgba(255, 51, 194, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 12px rgba(255, 51, 194, 0.9);
+    }
+    100% {
+        box-shadow: 0 0 12px rgba(255, 51, 194, 0.2);
     }
 }

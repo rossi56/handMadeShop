@@ -1,8 +1,27 @@
 
-<FilesMatch "admin.php">
-Authname "Espace administrateur"
-Authtype Basic
-AuthUserFile "C:\xampp\htdocs\Projet-4.2\admin\.htpasswd"
-Require valid-user
-</FilesMatch>
+# Activation du module de réécriture d'URL :
+RewriteEngine On
 
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php?action=$1 [QSA,L]
+
+
+
+#--------------------------------------------------
+# Règles de réécriture d'URL :
+#--------------------------------------------------
+
+# Article sans numéro de page :
+# RewriteRule ^Chapitre-([0-9]+)$  blogChapitreView.php?id=$1 [L]
+
+# <FilesMatch "admin.php">
+# Authname "Espace administrateur"
+# Authtype Basic
+# AuthUserFile "C:\xampp\htdocs\Projet5\admin\.htpasswd"
+# Require valid-user
+# </FilesMatch>

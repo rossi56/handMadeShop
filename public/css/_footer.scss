@@ -1,79 +1,38 @@
 footer {
-    box-shadow: 0 -23px 60px 8px rgba(0, 0, 0, 0.788);
-    z-index: 200;
-    width: 100%;
-    position: relative;
-    background-color: black;
-    background-image: url('../img/footer3.png');
-    background-size: cover;
+    background-image: url('../img/back.png');
     display: flex;
-    flex-direction: column;
-    height: 300px;
-    border-top: 1px solid orange;
-    #adress {
-        z-index: 200;
-        margin-top: 75px;
-        align-self: center;
-        color: $colorSite;
-        text-align: center;
-        font-size: 25px;
-        font-family: 'Satisfy', cursive;
-        color: white;
-        @media screen and (max-width:22.5em) {
-            font-size: 18px;
-        }
-    }
-    #copy {
-        text-align: center;
-        margin-top: 35px;
-        z-index: 200;
-        align-self: center;
-        font-size: 20px;
-        color: white;
-        text-shadow: 1px 1px 0 $colorSite, 2px 2px 0 $colorSite, 3px 3px 0 $colorSite;
-       
-    }
-    #reseaux {
-        top: 20px;
-        right: 5%;
-        position: absolute;
-        z-index: 205;
+    height: 170px;
+    border-top: 1px solid grey;
+    text-align: center;
+    @media screen and (max-width: 22.5em) and (max-width: 48em){
         display: flex;
-        width: 50%;
-        #fb {
-            cursor: pointer;
-            right: 2%;
-            position: absolute;
-            width: 80px;
-            transition: transform 0.35s ease-in-out;
-            opacity: 0.7;
-            transform: rotate(15deg);
-            @media screen and (max-width:22.5em) {
-                width: 40px;
-                transform: translateX(-10%)
-            }
-            &:hover {
-                transform: scale(1.3);
-            }
-        }
-        #tw {
-            cursor: pointer;
-            right: 15%;
-            position: absolute;
-            width: 80px;
-            transition: transform 0.35s ease-in-out;
-            opacity: 0.7;
-            transform: rotate(-10deg);
-            @media screen and (max-width:22.5em) {
-                width: 40px;
-            }
-            &:hover {
-                transform: scale(1.3);
-            }
-        }
-        @media screen and (max-width:22.5em) {
-            width: 80%;
+        flex-direction: column;
+        text-align: center;
+    }
+    @media screen and (max-width: 48em) {
+        display: flex;
+        flex-direction: column;
+       text-align: center;
+    }
+    
+    p {
+        text-align: center;
+        width: 100%;
+        font-family: 'Lato', cursive;
+        font-size: 20px;
+        color: $colorSite;
+        margin-top: 55px;
+        @media screen and (max-width: 22.5em) {
+            width: 100%;
+            margin-top: 50px;
+            font-size: 16px;
         }
     }
-   
+}
+
+h2{
+    @media screen and (max-width: 22.5em) {
+        font-size: 28px;
+        text-align: center;
+    }
 }

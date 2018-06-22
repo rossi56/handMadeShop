@@ -1,12 +1,12 @@
 <?php
 require_once ('models/Model.php');
 
+
 /**
  * Gestions des membres
  */
 class MembresManager extends Model
 {
-    public static $erreurs = [];
 
     /**
      * Fonction pour vérifier si pseudo est disponible dans la base de données
@@ -19,7 +19,7 @@ class MembresManager extends Model
 
         $resultat = $bdd->prepare("SELECT COUNT(*) FROM membres WHERE pseudo = ?");
         $resultat->execute([$pseudo]);
-        $resultat = $resultat->fetch() [0];
+        $resultat = $resultat->fetch()[0];
 
         return $resultat;
     }
@@ -34,34 +34,32 @@ class MembresManager extends Model
      * @param [type] $passwordconf
      * @return void
      */
-    public function inscription($pseudo, $email, $emailconf, $password, $passwordconf)
+    public function inscription($pseudo, $email, $emailconf, $adressFacture, $adressLivraison, $password, $passwordconf)
     {
         $bdd = $this->getBdd();
 
-        $inscription = $bdd->prepare("INSERT INTO membres (pseudo, email, `password`, avatar) VALUES(:pseudo, :email, :password, :avatar)");
+        $inscription = $bdd->prepare("INSERT INTO membres (pseudo, email, adressFacture, adressLivraison, `password`, avatar) VALUES(:pseudo, :email, :adressFacture, :adressLivraison, :password, :avatar)");
         $inscription->execute([
             "pseudo" => htmlentities($pseudo),
             "email" => htmlentities($email),
+            "adressFacture" => htmlentities($adressFacture),
+            "adressLivraison" => htmlentities($adressLivraison),
             "password" => password_hash($password, PASSWORD_DEFAULT),
-            "avatar" => "user.png"              
+            "avatar" => "user2.png"              
         ]);
         // array_push(self::$erreurs,  "Votre inscription a bien été prise en compte");
         unset($_POST["pseudo"]);
         unset($_POST["email"]);
         unset($_POST["emailconf"]);
+        unset($_POST["adressFacture"]);
+        unset($_POST["adressLivraison"]);
+
+
         //Vider les champs après validation
 
        
     }
-    /**
-     * Génération des erreurs
-     *
-     * @return void
-     */
-    public static function getErreur()
-    {
-        return self::$erreurs;
-    }
+ 
 
     /**
      * Fonction connexion membre
@@ -75,11 +73,11 @@ class MembresManager extends Model
     //extraire donnée de la table membre
         extract($_POST);
 
-        $connexion = $bdd->prepare("SELECT id, password FROM membres WHERE pseudo = ?");
-        $connexion->execute([$pseudo]);
-        $connexion = $connexion->fetch();
-
-        return $connexion;
+        $req = $bdd->prepare("SELECT id, password FROM membres WHERE pseudo = ?");
+        $req->execute([$pseudo]);
+        $res = $req->fetch();
+            
+        return $res;
     }
 
 
@@ -93,11 +91,26 @@ class MembresManager extends Model
     {
         $bdd = $this->getBdd();
         
-        $membre = $bdd->prepare("SELECT pseudo, email, avatar FROM membres WHERE id = ?");
-        $membre->execute([$_SESSION["membre"]]);
-        $membre = $membre->fetch();
+        $req = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
+        $req->execute([$id]);
+        $res = $req->fetch();
 
-        return $membre;
+        return $res;
+    }
+
+    /**
+     * Fonction affichage du profil des membres
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function infosMembres()
+    {
+        $bdd = $this->getBdd();
+        
+        $req = $bdd->prepare("SELECT * FROM membres");
+        $res = $req->fetchAll();
+
     }
 
 
@@ -110,10 +123,10 @@ class MembresManager extends Model
     {
         $bdd = $this->getBdd();
         
-        $last = $bdd->query("SELECT id, pseudo, avatar FROM membres ORDER BY id DESC LIMIT 0,5");
-        $last = $last->fetchall();
+        $req = $bdd->query("SELECT id, pseudo, avatar FROM membres ORDER BY id DESC LIMIT 0,5");
+        $res = $req->fetchall();
 
-        return $last;
+        return $res;
     }
 
 
@@ -126,10 +139,10 @@ class MembresManager extends Model
     public function selectUser($id)
     {
         $bdd = $this->getBdd();
-        $update = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
-        $update->execute([$id]);
-        $user = $update->fetch();
-        return $user;
+        $req = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+        $req->execute([$id]);
+        $res = $req->fetch();
+        return $res;
     }
 
 
@@ -144,9 +157,47 @@ class MembresManager extends Model
     {
         $bdd = $this->getBdd();
         $newPseudo = htmlentities($_POST['newPseudo']);
-        $insertPseudo = $bdd->prepare("UPDATE membres SET pseudo = ? WHERE id = ?");
-        $insertPseudo->execute(array($newPseudo, $id));
-        header('Location: index.php?action=compte');
+        $req = $bdd->prepare("UPDATE membres SET pseudo = :pseudo WHERE id = :id");
+        $req->execute(array(
+            'pseudo' => $newPseudo,
+            'id' => $id));
+        
+    }
+
+    /**
+     * Remplacement du pseudo du profil membre
+     *
+     * @param [type] $id
+     * @param [type] $newPseudo
+     * @return void
+     */
+    public function newAdressLivraison($id, $newLivraison)
+    {
+        $bdd = $this->getBdd();
+        $newLivraison = htmlentities($newLivraison);
+        $req = $bdd->prepare("UPDATE membres SET adressLivraison = :adressLivraison WHERE id = :id");
+        $req->execute(array(
+            'adressLivraison' => $newLivraison,
+            'id' => $id));
+        
+    }
+
+      /**
+     * Remplacement du pseudo du profil membre
+     *
+     * @param [type] $id
+     * @param [type] $newPseudo
+     * @return void
+     */
+    public function newAdressFActure($id, $newFacture)
+    {
+        $bdd = $this->getBdd();
+        $newFacture = htmlentities($newFacture);
+        $req = $bdd->prepare("UPDATE membres SET adressFacture = :adressFacture WHERE id = :id");
+        $req->execute(array(
+            'adressFacture' => $newFacture,
+            'id' => $id));
+        
     }
 
     /**
@@ -160,9 +211,10 @@ class MembresManager extends Model
     {
         $bdd = $this->getBdd();
         $newMail = htmlentities($_POST['newMail']);
-        $insertMail = $bdd->prepare("UPDATE membres SET email = ? WHERE id = ?");
-        $insertMail->execute(array($newMail, $id));
-        header('Location: index.php?action=compte');
+        $req = $bdd->prepare("UPDATE membres SET email = :email WHERE id = :id");
+        $req->execute(array(
+            'email' => $newMail,
+            'id' => $id));
     }
 
 /**
@@ -175,22 +227,36 @@ class MembresManager extends Model
     public function newMdp($id, $newMdp)
     {
         $bdd = $this->getBdd();
-        $newMdp = htmlentities($newMdp);
-        $insertMdp = $bdd->prepare("UPDATE membres SET password = ? WHERE id = ?");
-        $insertMdp->execute(array($newMdp,$id));
-        header('Location: index.php?action=compte');
+        
+        $req = $bdd->prepare("UPDATE membres SET password = :password WHERE id = :id");
+        $req->execute(array(
+            'password' =>  password_hash($newMDP, PASSWORD_DEFAULT),
+            'id' => $id));
     }
 
     public function newAvatar($avatar, $id)
     {
         $bdd = $this->getBdd();
-        $insertAvatar = $bdd->prepare("UPDATE membres SET avatar = :avatar WHERE id = :id");
-        $insertAvatar->execute(array(
+
+        $req = $bdd->prepare("UPDATE membres SET avatar = :avatar WHERE id = :id");
+        $req->execute(array(
             'avatar' => $avatar,
             'id' => $id
 
         ));
     }
+
+    public function getVendor($id)
+    {
+        $bdd = $this->getBdd(); 
+
+        $req = $bdd->prepare('SELECT articles.id, membres.* FROM articles INNER JOIN membres ON articles.id_membre = membres.id WHERE articles.id = ? ');
+        $req->execute([$id]);
+        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+
+    }
+
 
 
 }

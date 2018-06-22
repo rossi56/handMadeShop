@@ -1,3 +1,30 @@
+
+
+/***********************************Identity card**************************** */
+
+$(document).ready(function()
+{
+    $('.contact').click(function (e) 
+    {
+        $('.card').toggleClass('active');
+        $('.banner').toggleClass('active');
+        $('.photo').toggleClass('active');
+        $('.social-media-banner').toggleClass('active');
+        $('.email-form').toggleClass('active');  
+        var buttonText = $('button.contact#main-button').text();
+        if (buttonText === 'Retour')
+        {
+            buttonText = 'Contactez-moi !';
+            $('button.contact#main-button').text(buttonText);
+        }
+        else
+        {
+            buttonText = 'Retour';
+            $('button.contact#main-button').text(buttonText);
+        }
+    });
+});
+
 /*----------------------BURGER-------------*/
 
 
@@ -10,20 +37,6 @@ $(document).ready(function () {
 
   });
 });
-
-/*-----------------PAUSE VIDEO------------------*/
-
-var pause = document.getElementById('pause');
-var video = document.getElementById('video');
-
-pause.addEventListener('click', function () {
-  if (video.paused) {
-    video.play();
-  } else {
-    video.pause();
-  }
-});
-
 
 
 
@@ -58,23 +71,8 @@ $(document).ready(function () {
 
 });
 
-/*----------------------------------AJAX------------------------------*/
-// $(document).ready(function () {
-//   $(".btn-submit").click(function () {
-//     $('.form').submit(function (e) {
-//       e.preventDefault();
-//       var formulaire = $(this);
-//       var post_url = formulaire.attr('contact');
-//       var post_data = formulaire.serialize();
-//       // On peut ajouter une image de chargement pour faire patienter l'internaute
-//       $('#loader3', formulaire).html('<img src=../../images/ajax-loader.gif />Please wait...');
-//       //Appel AJAX
-//       $.ajax({
-//         type: 'POST',
-//         url: post_url,
-//         data: post_data,
-        
-//       });
-//     });
-//   });
-// });
+/*--------------script appels ajax--------------*/
+
+
+/***************************************************/
+

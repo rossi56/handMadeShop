@@ -1,6 +1,8 @@
 <?php
 require_once ('models/Model.php');
 
+
+
 /**
  * Gestion de la partie administration
  */
@@ -12,20 +14,23 @@ class AdminManager extends Model
      *
      * @param [type] $image2
      * @param [type] $image
-     * @param [type] $contenu
+     * @param [type] $description
      * @param [type] $titre
      * @return void
      */
-    public function poster($image2, $image, $contenu, $titre)
+    public function poster( $image, $image1, $image2, $image3, $image4, $description, $titre)
     {
         $bdd =$this->getBdd();
-        $poster = $bdd->prepare("INSERT INTO articles(titre, extrait, contenu, img, imageArt) VALUES(:titre, :extrait, :contenu, :img, :imageArt)");
+        $poster = $bdd->prepare("INSERT INTO blog(titre, extrait, description, image_pres, image_art, image1, image2, image3) VALUES(:titre, :extrait, :description, :image_pres, :image_art, :image1, :image2, :image3)");
             $poster->execute([
             "titre" => $titre,
-            "extrait" => substr($contenu, 0, 200),//récupération de l'extrait de 200 caractères
-            "contenu" => nl2br($contenu),
-            "img" => $image,
-            "imageArt" => $image2
+            "extrait" => substr($description, 0, 200),//récupération de l'extrait de 200 caractères
+            "description" => nl2br($description),
+            "image_pres" => $image,
+            "image_art" => $image1,
+            "image1" => $image2,
+            "image2" => $image3,
+            "image3" => $image4,
             ]);
         
     }
@@ -36,23 +41,23 @@ class AdminManager extends Model
      *
      * @return void
      */
-    public function oldPosts(){
+    public function getChapitres()
+    {
         $bdd =$this->getBdd();
 
-        $posts =$bdd->query("SELECT id, titre FROM articles ORDER BY id DESC");
-        $posts = $posts->fetchAll();
-   
-        return $posts;
+        $req =$bdd->query("SELECT * FROM blog ORDER BY id DESC");
+        $res = $req->fetchAll();
+        return $res;
     }
 
 
     /**
-     * fonction supression des articles
+     * fonction supression d'un chapitre
      *
      * @param [type] $id
      * @return void
      */
-    public function supprimer($id){
+    public function deleteChapitre($id){
         $bdd =$this->getBdd();
 
 
@@ -62,8 +67,28 @@ class AdminManager extends Model
 
         // unlink("../img/" . $image);
 
-        $supprimer = $bdd->prepare("DELETE FROM articles WHERE id = ?");
-        $supprimer->execute([$id]);
+        $req = $bdd->prepare("DELETE FROM blog WHERE id = ?");
+        $req->execute([$id]);
+    }
+
+     /**
+     * fonction supression d'un article
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function deleteArticle($id){
+        $bdd =$this->getBdd();
+
+
+        // $image = $bdd->prepare("SELECT img, imageArt FROM articles WHERE id = ?"); //SUPPRESSION IMAGE DANS LE DOSSIER IMG
+        // $image->execute([$id]);
+        // $image = $image->fetch()["img"]["imageArt"];
+
+        // unlink("../img/" . $image);
+
+        $req = $bdd->prepare("DELETE FROM articles WHERE id = ?");
+        $req->execute([$id]);
     }
 
 
@@ -72,32 +97,51 @@ class AdminManager extends Model
      *
      * @return void
      */
-    public function post($id){
+    public function getChapitre($id){
         $bdd =$this->getBdd();
-
        
-        $post = $bdd->prepare("SELECT * FROM articles WHERE id = ?");
-        $post->execute([$id]);
-        $post = $post->fetch();
+        $req = $bdd->prepare("SELECT * FROM blog WHERE id = ?");
+        $req->execute([$id]);
+        $res = $req->fetch();
 
-        return $post;
+        return $res;
     }
 
       /**
-     * Fonction modification des articles
+     * Fonction modification des chapitres
      *
      * @return void
      */
-    public function modifier($id, $titre, $contenu)
+    public function editerArt($id, $titre, $description)
     {
         $bdd =$this->getBdd();
        
         
-        $modifier = $bdd->prepare("UPDATE articles SET titre = :titre, extrait = :extrait, contenu = :contenu WHERE id = :id");
-        $modifier->execute([
+        $req = $bdd->prepare("UPDATE articles SET titre = :titre, extrait = :extrait, description = :description WHERE id = :id");
+        $req->execute([
             "titre" => $titre,
-            "extrait" => substr($contenu, 0, 200),//récupération de l'extrait de 200 caractères
-            "contenu" => nl2br($contenu),
+            "extrait" => substr($description, 0, 200),//récupération de l'extrait de 200 caractères
+            "description" => nl2br($description),
+            "id" => $id
+          
+        ]);   
+    }
+
+       /**
+     * Fonction modification des articles
+     *
+     * @return void
+     */
+    public function editer($id, $titre, $description)
+    {
+        $bdd =$this->getBdd();
+       
+        
+        $req = $bdd->prepare("UPDATE blog SET titre = :titre, extrait = :extrait, description = :description WHERE id = :id");
+        $req->execute([
+            "titre" => $titre,
+            "extrait" => substr($description, 0, 200),//récupération de l'extrait de 200 caractères
+            "description" => nl2br($description),
             "id" => $id
         ]);    
     }

@@ -2,6 +2,7 @@
 /**
  * Connexion à la base de données
  */
+
 abstract class Model
 {
     private static $_bdd;
@@ -13,7 +14,7 @@ abstract class Model
      */
     private static function setBdd()
     {
-        self::$_bdd = new PDO('mysql:dbname=blog;host=localhost; charset=utf8', 'gretaxao_sebastienc', 'sebastienc2017');
+        self::$_bdd = new PDO('mmysql:dbname=rossidwfcspro5; host=rossidwfcs56000.mysql.db; charset=utf8', 'rossidwfcs56000', 'corvetteC235');
      
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
        
@@ -33,8 +34,6 @@ abstract class Model
 }
 
 
-
-//Laisser un commentaire dans les articles
 
 
 

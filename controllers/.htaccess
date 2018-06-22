@@ -1,8 +1,0 @@
-
-<FilesMatch "admin.php">
-Authname "Espace administrateur"
-Authtype Basic
-AuthUserFile "http://www.greta-bretagne-sud.fr/kercode-promo2/sebastien-c/Projet-4/admin/.htpasswd"
-Require valid-user
-</FilesMatch>
-

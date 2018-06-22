@@ -23,26 +23,21 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
-        <link rel="stylesheet" href="public/css/main.css">
-        <title>Billet simple pour l'Alaska</title>
+        <title>Espace Administration</title>
     </head>
 
     <body>
         <header>
-            <h1><?= $titleHeader ?></h1>
         <nav>
-            <a href="index.php?action=articles">Le roman</a>
-            <a href="admin.php?action=admin">Administration</a>
-            <a href="admin.php?action=publication">Nouveau chapitre</a>
-            <a href="admin.php?action=edition">Chapitres publiés</a>
-            <a href="admin.php?action=deconnexion">Déconnexion</a>
+            <ul id="menu">
+                <li> <a  class="hvr-underline-from-center"  href="Blog&page=1">Le Blog</a></li>
+                <li> <a  class="hvr-underline-from-center" href="Articles&page=1">La boutique</a> </li>
+                <li><a  class="hvr-underline-from-center" href="Administration">Administration</a></li>
+                <li><a  class="hvr-underline-from-center" href="Publication">Nouveau chapitre</a></li>
+                <li><a  class="hvr-underline-from-center" href="Edition">Chapitres publiés</a></li>
+            </ul>
         </nav>
-        <video id="video" autoplay loop src="<?= $video  ?>"></video>
-        <button id="pause">
-                    <i class="far fa-pause-circle fa-3x"></i>
-                </button>
-                
-        <div class="pattern"></div>
+          
         <div class="burger">
             <svg width="100px" height="100px">
                 <path class="top" d="M 30 40 L 70 40 C 90 40 90 75 60 85 A 40 40 0 0 1 20 20 L 80 80"></path>
@@ -55,7 +50,6 @@
             
             <section class="container">
               <?= $content ?>
-            <div class="bg"></div>
             <div class="scrollTop">
               <i class="fas fa-angle-double-up "></i>
             </div>

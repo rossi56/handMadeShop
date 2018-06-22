@@ -1,0 +1,58 @@
+.allArticles {
+    margin-top: 50px;
+    margin-bottom: 200px;
+    display: flex;
+    flex-wrap: nowrap;
+    @media screen and (max-width: 22.5em) {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-deck {
+        width: 30%;
+        .card {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            h4 {
+                margin-top: 15px;
+                padding-left: 15px;
+            }
+            .card-text{
+                color: $colorText;
+            }
+            a {
+                display: block;
+                width: 45%;
+                margin-left: 15px;
+            }
+        }
+    }
+}
+
+
+
+.result {
+    height: 100vh;
+}
+
+.empty {
+    margin-top: 160px;
+    font-family: 'Lato', cursive;
+    font-size: 45px;
+    padding: 25px;
+    opacity: 1;
+    animation: pulse 0.55s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 12px rgba(255, 51, 194, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 12px rgba(255, 51, 194, 0.9);
+    }
+    100% {
+        box-shadow: 0 0 12px rgba(255, 51, 194, 0.2);
+    }
+}

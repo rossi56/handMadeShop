@@ -1,6 +1,9 @@
 <?php
 require_once ('models/Model.php');
 
+use Projet5\models;
+
+
 /**
  * Gestion de la page de contact
  */

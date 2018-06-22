@@ -1,30 +1,25 @@
-<?php 
-$title = "Billet simple pour l'Alaska";
-$titleHeader = "";
-$image = "";
-$video = "public/video/connexion.mp4"
-?>
+<?php ob_start() ?>
 
-<?php ob_start(); ?>
-
+<h2>Connectez-vous</h2>
+<img class="logo" src="public/img/market/logo3.png" alt="logo">
     <div class="formulaire">
-        <h3>Connectez-vous !</h3>
-            <form method="post" action="index.php?action=connexion">
-<?php
-    $erreurs = ControllerMembres::getErreur();
-    if($erreurs) :
-?>
-<!-- affichage de ce message en cas d'erreur -->
-    <div class="message erreur envoi">
-        <?= $erreurs[0] ?>
-    </div>
-<?php
-endif;
-?>
-                <input type="text" name="pseudo" placeholder="Pseudo" value="<?php if(isset($_POST["pseudo"])) echo ($_POST["pseudo"]) ?>">
-                <input type="password" name="password" placeholder="Mot de Passe">
-                <input class="btn-submit" type="submit" value="Connexion">
+        <div id="response"></div>
+        <div class="wrapper">
+            <form id='connexion' class="form-signin form" method="post" name='form' action="Connexion"> 
+              
+                <div class="form-group">
+                <label for="text">Votre Pseudo</label>
+                <input  type="text" class="form-control pseudo" name="pseudo" placeholder="Pseudo" onblur="validate('pseudo', this.value)" value="<?php if(isset($_POST["pseudo"])) echo ($_POST["pseudo"]) ?>">
+                <div class="help-block help" ></div>
+                </div>
+                <div class="form-group">
+                <label for="text">Votre mot de passe</label>
+                <input  class="form-control password" type="password" name="password" onblur="validate('password', this.value)" placeholder="Mot de Passe">
+                <div class="help-block help" ></div>
+                </div>  
+                <input class="btn submit" onclick="checkForm()" type="submit" value="Connexion">
             </form>
+        </div>      
     </div>
 
 <?php $content = ob_get_clean(); ?>

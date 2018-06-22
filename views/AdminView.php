@@ -1,83 +1,77 @@
-<?php
-$title = "Administration";
-$titleHeader = "";
-$video = "public/video/admin.mp4"
-?>
-
-<?php ob_start(); ?>
-
-
-<section class="admin">
-
+<?php ob_start() ?>
+<h2>Bonjour "<?= $admin["pseudo"]; ?>", Bienvenue sur votre espace personnel ! </h2>
+<img class="logo" src="public/img/market/logo3.png" alt="logo">
+<section class="compte">
+<div class="articles admin">
  
    
 <?php
   if($reports)  :
       
 ?>
-    <h3>Jean Forteroche</h3>
-        <img class='avatar' src="public/img/avatars/forteroche.png" alt="Jean Forteroche">
+   
+    <img class="avatar" src="public/img/avatars/<?= $admin["avatar"] ?>" alt="<?= $admin["avatar"] ?>">
         <div class="signal">
             <i class='fas fa-exclamation-triangle'></i>
-            <h2>Commentaires à modérer !</h2>
+            <h2>Commentaire(s) à modérer!</h2>
             
         </div>  
         
 <?php
     endif;
 ?>
-        <article class="comments">
+        <article class="commentaires">
 <?php
     foreach($reports as $report) :
 ?>
  
-    <p class='membre'> <span> Membre : </span><?= $report['pseudo'] ?></p>
-    <p class='report'><span> Commentaire : </span><?= $report['commentaire'] ?> </p> 
-    <div class="gestion">
-    <p class="delete"><a href="admin.php?action=deleteComment&id=<?= $report['id'] ?>">Supprimer</a></p> 
-    <p class="valide"><a href="admin.php?action=valider&id=<?= $report['id'] ?>">Valider</a>
-    </p>
-    </div>
+ <p class="date">Posté le <time datetime="<?= $report["publication"] ?>"><?= $report["publication"] ?></time> par <?= $report['pseudo']?> <br> <br>"<?= $report["commentaire"] ?>"</p> 
+        <img src="public/img/avatars/<?= $report["avatar"] ?>" alt=" <?= $report["avatar"] ?>">
+    
+    <a href="Supprimer-un-commentaire&id=<?= $report[3] ?>">Supprimer</a>
+    <a  href="Validation&id=<?= $report[3] ?>">Valider</a>
+  
 <?php
 
     endforeach;
 
 ?>
 </article>
-    
-<h3>Les 5 derniers commentaires publiés</h3>
+<hr>
+<h2>Les 5 derniers commentaires publiés</h2>
 <?php
     foreach($commentaires as $commentaire) :
 ?>
-    <article class="comments">
-            <p class="date"> <span> Posté par le membre n°<?= $commentaire["id_membre"] ?> :</span>  <?= $commentaire["pseudo"] ?> <br> <br> le <time datetime="<?= $commentaire["publication"] ?>" ><?= $commentaire["publication"] ?></time>     
-            <p class="comment">"<?= $commentaire["commentaire"] ?>"</p>
-            <a href="admin.php?action=admin&id=<?= $commentaire['id'] ?>">Supprimer ce commentaire</a>
-    </article>
+    <div class="commentaires">
+            <img src="public/img/avatars/<?= $commentaire["avatar"] ?>" alt="<?= $commentaire["avatar"] ?>">
+            <p style='margin-top: 30px; ' class="date"> <span> Posté par le membre n°<?= $commentaire["id_membre"] ?> :</span>  <?= $commentaire["pseudo"] ?> <br> <br> le <time datetime="<?= $commentaire["publication"] ?>" ><?= $commentaire["publication"] ?></time>     
+            <br><br> "<?= $commentaire["commentaire"] ?>"</p>
+            <a style='margin-top: 30px;' class="btn" href="Administration&id=<?= $commentaire['id'] ?>">Supprimer ce commentaire</a>
+  
 
 <?php
     endforeach;
 ?>
+<hr>
+ <h2>Les 5 derniers membres inscrits</h2>
 
- <h3>Les 5 derniers membres inscrits</h3>
-<article class="comments">
    
 <?php
     foreach($membres as $membre) :
 ?>
-    <p><img class='avatar' src="public/img/avatars/<?= $membre['avatar'] ?>" alt=""></p>
-    <p class="date"><span> Membre n°<?= $commentaire["id_membre"] ?> :</span>  <?= $membre['pseudo'] ?></p> 
-    <a href="admin.php?action=admin&id=<?= $membre['id'] ?>">Supprimer</a>
+<img  src="public/img/avatars/<?= $membre['avatar'] ?>" alt="<?= $membre['avatar'] ?>">
+    <p style='margin-top: 30px;' class="date"><span> Membre n°<?= $membre["id"] ?> :</span>  <?= $membre['pseudo'] ?></p> 
+    <a style='margin-top: 30px;' class="btn" href="Administration&id=<?= $membre['id'] ?>">Supprimer</a>
 
 <?php
 
     endforeach;
 ?>
-</article>
+
+
+</div>
+</div>
 </section>
-
-
-
 
 <?php $content = ob_get_clean(); ?>
 <?php require('templates/templateAdmin.php'); ?>

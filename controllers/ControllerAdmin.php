@@ -2,6 +2,13 @@
 require_once 'models/AdminManager.php';
 require_once 'models/CommentsManager.php';
 require_once 'models/MembresManager.php';
+require_once 'models/ArticlesManager.php';
+require_once 'models/CaddieManager.php';
+
+
+
+
+use Projet5\controllers;
 
 /**
  * Contrôleur Administration
@@ -13,90 +20,110 @@ class ControllerAdmin
     private $commentaires;
     private $membres;
     private $erase;
-    private static $erreurs = [];
-    private static $chapter;
+    private $chapitres;
     private $reports;
+    private $admin;
+    private $articles;
+    private $chapitre;
+    private $article;
 
     public function __construct()
     {
-        $this->adminManager = new AdminManager;
-        $this->commentsManager = new CommentsManager;
-        $this->membresManager = new MembresManager;
+        $this->admin = new AdminManager;
+        $this->comments = new CommentsManager;
+        $this->membres = new MembresManager;
+        $this->article = new ArticlesManager;
+        $this->caddie = new CaddieManager;
 
     }
     
-    /**
-     * Fonction de publication des articles
-     *
-     * @param [type] $image2
-     * @param [type] $image
-     * @param [type] $contenu
-     * @param [type] $titre
-     * @return void
-     */
-    public function publier($image, $image2, $contenu, $titre)
+   /**
+    * Fonction de publication des chapitres du blog
+    *
+    * @param [type] $image
+    * @param [type] $image1
+    * @param [type] $image2
+    * @param [type] $image3
+    * @param [type] $image4
+    * @param [type] $description
+    * @param [type] $titre
+    * @return void
+    */
+    public function publier($image,$image1, $image2,$image3,$image4, $description, $titre)
     {
-        $posts = $this->adminManager->poster($image2, $image, $contenu, $titre);
+        $posts = $this->admin->poster( $image, $image1, $image2,$image3, $image4, $description, $titre);
        
         extract($_POST);
 
         $validation = true;
 
-        if(empty($titre) || empty($contenu)) {//Vérif de présence de contenu et d'un titre
+        if(empty($titre) || empty($description)) {//Vérif de présence de contenu et d'un titre
             $validation = false;
-            array_push(self::$erreurs, " <i class='fas fa-exclamation-triangle'></i> <br> Tous les champs sont obligatoires !");
+           
         }
 
         if(!isset($_FILES["file"]) OR $_FILES["file"]["error"] > 0) {//Vérif de la présence d'image
             $validation = false;
-            array_push(self::$erreurs, " <i class='fas fa-exclamation-triangle'></i> <br> Aucune photo de présentation sélectionnée!");
+          
+        }
+        if(!isset($_FILES["file1"]) OR $_FILES["file2"]["error"] > 0) {//Vérif de la présence d'image
+            $validation = false;
+           
         }
 
-            if(!isset($_FILES["file2"]) OR $_FILES["file2"]["error"] > 0) {//Vérif de la présence d'image
-                $validation = false;
-                array_push(self::$erreurs, " <i class='fas fa-exclamation-triangle'></i> <br> Aucune photo d'article sélectionnée!");
+        if(!isset($_FILES["file2"]) OR $_FILES["file2"]["error"] > 0) {//Vérif de la présence d'image
+            $validation = false;
+
+        }
+        if(!isset($_FILES["file3"]) OR $_FILES["file3"]["error"] > 0) {//Vérif de la présence d'image
+            $validation = false;
+
+        }
+        if(!isset($_FILES["file4"]) OR $_FILES["file4"]["error"] > 0) {//Vérif de la présence d'image
+            $validation = false;
 
         }
         if($validation) 
         {
-            array_push(self::$erreurs, '<h2>Votre chapitre a bien été publié !</h2>
-            <i class="far fa-check-circle"></i>
-             ');
+            
             //Récupération de l'image
             $image = basename($_FILES["file"]["name"]);
-            $image2 = basename($_FILES["file2"]["name"]);//récupération du nom de l'image et pas du chemin complet avec la fonction basename
+            $image1 = basename($_FILES["file1"]["name"]);
+            $image2 = basename($_FILES["file2"]["name"]);
+            $image3 = basename($_FILES["file3"]["name"]);
+            $image4 = basename($_FILES["file4"]["name"]);//récupération du nom de l'image et pas du chemin complet avec la fonction basename
             //enregistrement définitif du fichier
-            move_uploaded_file($_FILES["file"]["tmp_name"], 'public/img/article' . $image);
-            move_uploaded_file($_FILES["file2"]["tmp_name"], 'public/img/presentation' . $image2);
+            move_uploaded_file($_FILES["file"]["tmp_name"], 'public/img/blog' . $image);
+            move_uploaded_file($_FILES["file1"]["tmp_name"], 'public/img/blog' . $image1);
+            move_uploaded_file($_FILES["file2"]["tmp_name"], 'public/img/blog' . $image2);
+            move_uploaded_file($_FILES["file3"]["tmp_name"], 'public/img/blog' . $image3);
+            move_uploaded_file($_FILES["file4"]["tmp_name"], 'public/img/blog' . $image4);
+
+
 
            
             
             unset($_POST["titre"]);
             unset($_POST["contenu"]);
         }
-        require ('views/publicationView.php');
+        
+        header ('Location: Blog');
 
     }
 
-    /**
-     * Récupération du tableau d'erreur
-     *
-     * @return void
-     */
-    public static function getErreur()
-    {
-        return self::$erreurs;
-    }
+ 
     /**
      * Récupération des infos membres
      *
      * @return void
      */
-    public function members()
+    public function members($id)
     {
-        $commentaires = $this->commentsManager->lastComments();
-        $membres = $this->membresManager->lastMembers();
-        $reports = $this->commentsManager->getReports();
+        $commentaires = $this->comments->lastComments();
+        $membres = $this->membres->lastMembers();
+        $reports = $this->comments->getReports();
+        $admin = $this->membres->infos($id);
+        $articles = $this->article->getArticles();
         
             
         require ('views/adminView.php');
@@ -108,10 +135,10 @@ class ControllerAdmin
      *
      * @return void
      */
-    public function validate()
+    public function validate($id)
     {
-        $reports = $this->commentsManager->valideReports();
-        header ('Location: admin.php?action=admin');
+        $reports = $this->comments->valideReports($id);
+        header('Location: admin.php?action=admin');
     }
 
     /**
@@ -122,7 +149,7 @@ class ControllerAdmin
      */
     public function deleteMember($id)
     {
-       $erase = $this->adminManager->eraseMember($id);                     
+       $erase = $this->admin->eraseMember($id);                     
     }
 
 
@@ -134,8 +161,8 @@ class ControllerAdmin
      */
     public function deleteComment($id)
     {
-        $erase = $this->adminManager->eraseComment($id);
-        header ('Location: admin.php?action=admin');
+        $erase = $this->admin->eraseComment($id);
+        header ('Location: Administration');
     }
 
     /**
@@ -143,12 +170,22 @@ class ControllerAdmin
      *
      * @return void
      */
-    public function editer($id, $titre, $contenu)
+    public function editer($id, $titre, $description)
     { 
-        $posts = $this->adminManager->modifier($id, $titre, $contenu);
-        return $posts;
+        $chapitre = $this->admin->editer($id, $titre, $description);
+        header ('Location: Edition');
     }
 
+     /**
+     * Fonction de modification des articles en vente
+     *
+     * @return void
+     */
+    public function editerArt($id, $titre, $description)
+    { 
+        $article = $this->admin->editerArt($id, $titre, $description);
+        header ('Location: Edition');
+    }
 
     
     /**
@@ -156,13 +193,16 @@ class ControllerAdmin
      *
      * @return void
      */
-    public function anciens()
+    public function getChapitres()
     {
-        $posts = $this->adminManager->oldPosts();
-        return $posts;
+        $chapitres = $this->admin->getChapitres();
+        $articles = $this->article->getArticles();
+
+        require ('views/oldView.php');         
       
     }
 
+        
 
     /**
      * Fonction modif d'un article
@@ -170,21 +210,40 @@ class ControllerAdmin
      * @param [type] $id
      * @return void
      */
-    public function post($id)
+    public function getChapitre($id)
     {
-        $posts = $this->adminManager->post($id);
-        return $posts;
+        $chapitre = $this->admin->getChapitre($id);
+        require ('views/modifView.php');
+       
     }
+
+    public function getArticle($id)
+    {
+      $article = $this->article->getArticle($id);
+      require ('views/modifArtView.php');
+    }
+
 
     /**
      * Fonction supression d'un chapitre et de ses commentaires
      *
      * @return void
      */
-    public function deletePost($id)
+    public function deleteChapitre($id)
     {
-        $delete = $this->adminManager->eraseComments($id);
-        $delete = $this->adminManager->supprimer($id);    
+        $delete = $this->admin->eraseComments($id);
+        $delete = $this->admin->deleteChapitre($id);    
+    }
+
+     /**
+     * Fonction supression d'un chapitre et de ses commentaires
+     *
+     * @return void
+     */
+    public function deleteArticle($id)
+    {
+        $delete = $this->admin->eraseComments($id);
+        $delete = $this->admin->deleteArticle($id);    
     }
 
      
@@ -199,6 +258,6 @@ class ControllerAdmin
         $_SESSION = array();
         session_destroy();
         session_start();
-        header("Location: home.php");
+        header('Location: Article');
     }
 }

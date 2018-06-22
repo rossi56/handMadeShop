@@ -1,24 +1,19 @@
 <footer>
-    <div id="adress">
-        <p>Jean Forteroche
-            <br>
-            <br>4050 University Lake Dr,Anchorage,
-            <br>
-            <br> AK 99508-4600 Etats Unis</p>
-    </div>
-
-
-    <div id="reseaux">
-        <a href="https://www.facebook.com/"><img id="fb" src="public/img/facebook.png" alt="facebook"></a>
-        <a href="https://twitter.com/"><img src="public/img/twitter.png" alt="twitter" id="tw"></a>
-    </div>
-    <p id="copy">Copyright Kercode 2018 <br> Sébastien Champalaune <br> Site réalisé à des fins pédagogiques</p>
+    <p>Trouvez facilement ce que vous aimez !
+        <br>
+        <br> Copyright Kercode 2018 </p>
 </footer>
-
-<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script src="public/js/paypal.js "></script>
+<script src="public/js/jquery.js "></script>
+<script src="public/js/form.js "></script>
+<script src="public/js/ajax.js "></script>
 <script src="public/js/script.js"></script>
-<script src="public/js/split.js"></script>
+<script src="public/js/scrollreveal.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
 
 </body>

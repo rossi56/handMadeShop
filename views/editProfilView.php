@@ -1,29 +1,37 @@
-
-<?php 
-$title = "Billet simple pour l'Alaska";
-$titleHeader = "";
-$image = "";
-$video = "public/video/profil.mp4";
-
-$user = ControllerMembres::getUser();
-    ob_start(); ?>
-
+<?php ob_start();
+$user = ControllerMembres::getUser()
+?>
+<h2>Edition de mes informations personnelles</h2>
+<img class="logo" src="public/img/market/logo3.png" alt="logo">
             
             <div class="formulaire">
-                <h3>Edition de mon profil</h3>
-                    <form action="" method="post" enctype='multipart/form-data'>
-                        <label>Votre Pseudo : <?= $user ['pseudo']  ?></label>
-                            <input type="text" name="newPseudo" placeholder="Nouveau Pseudo" value="">
-                        <label>Votre E-Mail : <?= $user['email'] ?></label>
-                            <input type="mail" name="newMail" placeholder="E-mail" value="">
-                        <label>Entrez un nouveau mot de passe : </label>
-                            <input type="password" name="newPassword" placeholder="Nouveau Mot de passe">
-                        <label>Confirmation du mot de passe :</label>
-                            <input type="password" name="newPPasswordConf" placeholder="Confirmation du Mot de passe">
-                        <label>Avatar : </label>
-                            <input type="file" name='avatar'>
-                            
-                            <input type="submit" value="Mettre à jour">
+            <div class="wrapper">
+            
+                    <form  class="form-signin " action="" method="post" enctype='multipart/form-data'>
+
+                        <label>Votre Pseudo: <?= $user ['pseudo']  ?></label>
+                            <input class="form-control" type="text" name="newPseudo" placeholder="Nouveau Pseudo" value="">
+<hr>  
+                        <label>Votre E-Mail: <?= $user['email'] ?></label>
+                            <input class="form-control" type="mail" name="newMail" placeholder="Nouvel e-mail" value="">
+<hr>  
+                        <label>Facturation: <?= $user['adressFacture'] ?> </label>
+                            <input class="form-control" type="text" name="newAdressFacture" placeholder="Entrez votre adresse complète">
+<hr>   
+                        <label>Livraison: <?= $user['adressLivraison'] ?> </label>
+                            <input class="form-control" type="text" name="newAdressLivraison" placeholder="Entrez votre adresse complète">
+<hr>  
+                        <label>Entrez un nouveau mot de passe: </label>
+                            <input class="form-control" type="password" name="newPassword" placeholder="Nouveau Mot de passe">
+<hr>  
+                        <label>Confirmation du mot de passe:</label>
+                            <input class="form-control" type="password" name="newPasswordConf" placeholder="Confirmation du Mot de passe">
+<hr>  
+                        <label>Avatar: <img src="public/img/avatars/<?= $user['avatar'] ?>" alt="<?= $user['avatar'] ?>"></label>
+                            <input class="form-control" type="file" name='avatar'>
+<hr>  
+                            <button class='btn' type="submit" value="Mettre à jour">Soumettre</button>
+                    
                     </form>
                     <?php if(isset($erreur)) { echo $erreur;} ?>
             </div>

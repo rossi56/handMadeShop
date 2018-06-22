@@ -1,0 +1,47 @@
+.blogChapitre {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+    img {
+        width: 30%;
+        align-self: center;
+        margin-top: 25px;
+    }
+    h2 {
+        @include h2;
+        margin-top: 75px;
+        margin-bottom: 75px;
+    }
+    p{
+        margin-top: 50px;
+        margin-bottom: 50px;
+        font-family: 'Lato', cursive;
+        font-size: 20px;
+        color: $colorText;
+        a{
+            color: $colorSite;
+        }
+
+    }
+    .avis{
+        font-family: "Lato", cursive;
+        color: $colorSite;
+        .fa-star {
+            color: rgb(240, 187, 12);
+            margin-right: 2%;
+        }
+    }
+    hr {
+        width: 100%;
+        background-color: $colorSite;
+        margin-bottom: 50px;
+    }
+    
+    .comments{
+        @include comments;
+        margin-bottom: 50px;
+    }
+}
+

@@ -2,19 +2,18 @@
 @import "reset";
 @import "variables";
 @import "mixins";
-@import url(https://fonts.googleapis.com/css?family=Archivo+Narrow|Julius+Sans+One|Schoolbell);
-@import url(https://fonts.googleapis.com/css?family=Satisfy);
-@import url(https://fonts.googleapis.com/css?family=Cookie|Londrina+Outline|Yellowtail);
-@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:400,300,500);
-@import url(https://fonts.googleapis.com/css?family=Life+Savers:400,700);
-//Style global du site
-@import "roman";
+@import url('https://fonts.googleapis.com/css?family=Lato|Londrina+Sketch');
+@import "allArticles";
+@import "blogChapitre";
+@import "allBlog";
+@import "accueil";
 @import "admin";
 @import "post";
 @import "compte";
 @import "formulaires";
 @import "responsive";
 @import "chapitre";
+@import "market";
 @import "header";
 @import "contenu";
 @import "footer";

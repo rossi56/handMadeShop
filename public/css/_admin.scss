@@ -8,6 +8,7 @@
     opacity: 0;
     background-color: $colorSite;
     padding: 20px;
+    -webkit-transition: all 0.4s ease-in-out 0s;
     transition: all 0.4s ease-in-out 0s;
     .fa-angle-double-up {
         font-size: 35px;
@@ -23,15 +24,12 @@
 
 .admin {
     z-index: 10;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    .avatar {
-        margin-top: 50px;
-        width: 20%;
-        margin-bottom: 100px;
-        border-radius: 50%;
+    .commentaires {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     .signal {
         display: flex;
@@ -51,6 +49,16 @@
             margin-bottom: 20px;
         }
     }
+    @-webkit-keyframes signal {
+        from {
+            opacity: 1;
+            visibility: visible;
+        }
+        to {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
     @keyframes signal {
         from {
             opacity: 1;
@@ -61,17 +69,8 @@
             visibility: hidden;
         }
     }
-    video {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        min-width: 100%;
-        min-height: 100%;
-        position: absolute;
-        z-index: 1;
-        opacity: .8;
-    }
     .erreur {
+        -ms-flex-item-align: center;
         align-self: center;
         color: red;
         font-size: 30px;
@@ -89,42 +88,29 @@
         }
     }
     .comments {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
         margin-top: 5px;
-        h3 {}
-        .avatar {
-            width: 200px;
-            margin-bottom: -50px;
-        }
-        .membre {
-            font-family: 'Satisfy', cursive;
-            color: rgb(255, 255, 255);
-            span {
-                text-shadow: 1px 1px 0 $colorSite, 2px 2px 0 $colorSite, 3px 3px 0 $colorSite;
-            }
-        }
+        margin-bottom: 30px;
+        .membre,
         .report {
-            font-family: 'Satisfy', cursive;
+            font-family: 'Lato', cursive;
             color: rgb(255, 255, 255);
             span {
                 text-shadow: 1px 1px 0 $colorSite, 2px 2px 0 $colorSite, 3px 3px 0 $colorSite;
-            }
-        }
-        .gestion {
-            display: flex;
-            .delete {
-                font-size: 25px;
-                margin-right: 70px;
-            }
-            .valide {
-                font-size: 25px;
             }
         }
         a {
             text-align: center;
-            font-family: 'Satisfy', cursive;
+            font-family: 'Lato', cursive;
             font-size: 25px;
             display: block;
             color: white;
@@ -133,7 +119,7 @@
             margin-top: 25px;
             border: 1px solid white;
             padding: 15px 35px;
-            border-radius: 10px;
+            -webkit-transition: 0.25s ease-in-out;
             transition: 0.25s ease-in-out;
             &:hover {
                 border: 1px solid $colorSite;
@@ -144,38 +130,33 @@
         .date {
             font-size: 20px;
             color: white;
-            font-family: 'Life', cursive;
+            font-family: 'Lato', cursive;
             span {
                 text-shadow: 1px 1px 0 $colorSite, 2px 2px 0 $colorSite, 3px 3px 0 $colorSite;
             }
-        }
-        .comment {
-            background-color: rgba(255, 255, 255, 0.699);
-            border-radius: 15px;
-            font-size: 20px;
-            min-height: 50px;
-            width: 40%;
-            border: 1px solid white;
         }
         img {
             width: 80px;
         }
     }
-    form {
+    .formulaire {
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-        width: 60%;
+        width: 100%;
         z-index: 10;
-        .insert-pres {
-            top: 17%;
-            left: 30%;
-        }
-        .insert-art {
-            top: 32%;
-            left: 30%;
+        label {
+            @include h3;
         }
         .erreur {
+            -ms-flex-item-align: center;
             align-self: center;
             color: red;
             font-size: 30px;
@@ -183,13 +164,11 @@
         input[type=file] {
             color: $colorSite;
         }
-        input,
-        textarea {
-            border-radius: 10px;
+        input {
             font-family: 'Alegreya', cursive;
             font-size: 20px;
             text-align: center;
-            width: 70%;
+            width: 60%;
             height: 50px;
             margin-top: 50px;
             align-self: center;
@@ -197,20 +176,21 @@
                 color: $colorSite;
             }
         }
-        textarea {
-            height: 200px;
-        }
         input[type=submit] {
             font-size: 15px;
             margin-bottom: 50px;
             height: 50px;
             color: white;
+            -ms-flex-item-align: center;
             align-self: center;
             border: none;
             outline: none;
             background: transparent;
             border: 1px solid rgb(255, 255, 255);
+            -webkit-transition: -webkit-transform 0.25s ease-in-out;
+            transition: -webkit-transform 0.25s ease-in-out;
             transition: transform 0.25s ease-in-out;
+            transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
             width: 30%;
             &:hover {
                 color: $colorSite;
