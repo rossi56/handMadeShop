@@ -14,7 +14,7 @@ abstract class Model
      */
     private static function setBdd()
     {
-        self::$_bdd = new PDO('mmysql:dbname=rossidwfcspro5; host=rossidwfcs56000.mysql.db; charset=utf8', 'rossidwfcs56000', 'corvetteC235');
+        self::$_bdd = new PDO('mmysql:dbname=rossidwfcspro5; host=rossidwfcspro5.mysql.db; charset=utf8', 'rossidwfcspro5', 'corvetteC235');
      
         self::$_bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
        

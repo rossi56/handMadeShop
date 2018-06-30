@@ -3,6 +3,7 @@
         <br>
         <br> Copyright Kercode 2018 </p>
 </footer>
+<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script src="public/js/paypal.js "></script>

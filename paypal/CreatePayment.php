@@ -8,10 +8,10 @@ require_once "PayPalPayment.php";
             $msg = "Une erreur est survenue, merci de bien vouloir réessayer ultérieurement...";
             $paypal_response = [];
 
-            $bdd = new PDO('mysql:dbname=boutique; host=localhost; charset=utf8', 'root', '');
-            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);     
+            $bdd = new \PDO('mysql:dbname=boutique; host=localhost; charset=utf8', 'root', '');
+            $bdd->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);     
                 $articles = $bdd->query("SELECT caddie.*, articles.* FROM caddie INNER JOIN articles ON caddie.id_article = articles.id ");
-                $articles = $articles->fetch(PDO::FETCH_ASSOC);
+                $articles = $articles->fetch(\PDO::FETCH_ASSOC);
             
 
             $payer = new PayPalPayment;
@@ -20,7 +20,7 @@ require_once "PayPalPayment.php";
             $payer->setSecret("EGvBpdVftF9p5_NEm2lbDpUcUjWw-zfL_kThxeum8lSqt9rqJe76nykJD-bcQsvLbYcdk_qJALaYl2rQ");
             
             $req = $bdd->query("SELECT sum(price_total) FROM caddie");
-            $count = $req->fetch(PDO::FETCH_ASSOC);
+            $count = $req->fetch(\PDO::FETCH_ASSOC);
          
 
             $payment_data = [
@@ -55,7 +55,7 @@ require_once "PayPalPayment.php";
                         ]
                         ]
                   ],
-                  "description" => "Ma p'tite Boutique vous remercie pour votre achat."
+                  "description" => "Hand made shop vous remercie pour votre achat."
                   ]
             ]
             ];

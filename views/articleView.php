@@ -1,4 +1,6 @@
-<?php ob_start() ?>
+<?php 
+use Rossi56\controllers\ControllerOneArticle;
+ob_start() ?>
 
     <div class="vente">
         <h2><?= $article["titre"]; ?></h2>

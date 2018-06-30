@@ -1,15 +1,15 @@
 <?php
  session_start();
-
-require_once 'controllers/ControllerArticles.php';
-require_once 'controllers/ControllerOneArticle.php';
-require_once 'controllers/ControllerContact.php';
-require_once 'controllers/ControllerMembres.php';
-require_once 'controllers/ControllerBlog.php';
-require_once 'controllers/ControllerMarket.php';
-require_once 'controllers/ControllerCategory.php';
-require_once 'controllers/ControllerCaddie.php';
-require_once 'controllers/ControllerAdmin.php';
+require 'vendor/autoload.php';
+use \Rossi56\controllers\ControllerAdmin;
+use \Rossi56\controllers\ControllerArticles;
+use \Rossi56\controllers\ControllerOneArticle;
+use \Rossi56\controllers\ControllerContact;
+use \Rossi56\controllers\ControllerMembres;
+use \Rossi56\controllers\ControllerBlog;
+use \Rossi56\controllers\ControllerMarket;
+use \Rossi56\controllers\ControllerCategory;
+use \Rossi56\controllers\ControllerCaddie;
 
 
 
@@ -52,7 +52,7 @@ class Router {
   {
     try 
     {
-        
+        var_dump($_GET); 
       if (isset($_GET['action']))
        {
         if ($_GET['action'] == 'Chapitre') 
@@ -388,6 +388,8 @@ class Router {
     }
       catch (Exception $e) 
       {
+          var_dump($e);
+          die();
        header("Location: home.php");
       }
     }

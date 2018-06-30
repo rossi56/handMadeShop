@@ -1,7 +1,8 @@
 <?php
-require_once ('models/Model.php');
+namespace Rossi56\models;
+use \Rossi56\models\Model;
 
-use Projet5\models;
+
 
 
 /**
@@ -79,7 +80,7 @@ class CategoryManager extends Model
 
         $req = $bdd->prepare("SELECT subCategory.*, articles.* FROM articles INNER JOIN subCategory ON articles.id_subCategory = subCategory.id where articles.id_subCategory = ?");
         $req->execute([$id]);    
-        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+        $res = $req->fetchAll(\PDO::FETCH_ASSOC);
         return $res;
     }
 
@@ -94,7 +95,7 @@ class CategoryManager extends Model
 
         $req = $bdd->prepare("SELECT subCategory.*, articles.* FROM articles INNER JOIN subCategory ON articles.id_subCategory = subCategory.id where articles.id = ?");
         $req->execute([$id]);    
-        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+        $res = $req->fetchAll(\PDO::FETCH_ASSOC);
         return $res;
     }
 
@@ -110,7 +111,7 @@ class CategoryManager extends Model
         $req = $bdd->prepare("SELECT articles.*, category.* FROM articles INNER JOIN category ON articles.id_category = category.id Where articles.id= ?");
         $req->execute([$id]);    
        
-        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+        $res = $req->fetchAll(\PDO::FETCH_ASSOC);
         return $res;
     }
 

@@ -1,14 +1,17 @@
 <?php
-require_once 'models/AdminManager.php';
-require_once 'models/CommentsManager.php';
-require_once 'models/MembresManager.php';
-require_once 'models/ArticlesManager.php';
-require_once 'models/CaddieManager.php';
+namespace Rossi56\controllers;
+use \Rossi56\models\AdminManager;
+
+use \Rossi56\models\ArticlesManager;
+use \Rossi56\models\CommentsManager;
+use \Rossi56\models\BlogManager;
+use \Rossi56\models\CaddieManager;
+use \Rossi56\models\CategoryManager;
+use \Rossi56\models\MembresManager;
+use \Rossi56\models\MarketManager;
 
 
 
-
-use Projet5\controllers;
 
 /**
  * Contrôleur Administration

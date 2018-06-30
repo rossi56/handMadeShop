@@ -1,7 +1,7 @@
 <?php
-require_once ('models/Model.php');
+namespace Rossi56\models;
+use \Rossi56\models\Model;
 
-use Projet5\models;
 
 
 /**
@@ -19,7 +19,7 @@ class MarketManager extends Model
     {
         $bdd = $this->getBdd();
 
-        $req = $bdd->prepare("SELECT articles.*, market.id  FROM articles INNER JOIN market ON articles.id_market = market.id where id_market = ? ");
+        $req = $bdd->prepare("SELECT articles.*, market.id  FROM articles INNER JOIN market ON articles.id_market = market.id  where id_market = ?  ORDER BY articles.id DESC ");
         $req->execute([$id]);
         $res = $req->fetchAll();
         return $res;
@@ -58,7 +58,7 @@ class MarketManager extends Model
     /*Sécurisation id de l'url, faille de sécurité*/
     $req = $bdd->prepare("SELECT * FROM market WHERE id = ?");
     $req->execute([$id]);
-    $res = $req->fetchAll(PDO::FETCH_ASSOC);
+    $res = $req->fetchAll(\PDO::FETCH_ASSOC);
     
     return $res;
     }

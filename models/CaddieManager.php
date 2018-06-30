@@ -1,5 +1,6 @@
 <?php
-require_once ('models/Model.php');
+namespace Rossi56\models;
+use \Rossi56\models\Model;
 
 
 /**
@@ -19,7 +20,7 @@ class CaddieManager extends Model
         $articles = $bdd->prepare("SELECT caddie.*, articles.* FROM caddie INNER JOIN articles ON caddie.id_article = articles.id AND caddie.id_membre = ? ");
         $articles->execute([$_SESSION["membre"]]);
 
-        $articles = $articles->fetchAll(PDO::FETCH_ASSOC);
+        $articles = $articles->fetchAll(\PDO::FETCH_ASSOC);
           return $articles;
     }
 

@@ -1,6 +1,6 @@
 {
     "name": "rossi/projet5",
-    "description": "Ma p'tite boutique - vente de produits en ligne",
+    "description": "Hand made shop - vente de produits en ligne",
     "authors": [
         {
             "name": "Rossi",
@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Rossi\\": "Projet5/"
+            "Rossi56\\": "./"
         }
     },
     "require": {}

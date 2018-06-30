@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <!-- Style global -->
     <link rel="stylesheet" href="public/css/main.css">
-    <title>Ma p'tite boutique</title>
+    <title>Hand made shop</title>
 </head>
 
 <body>
@@ -82,23 +82,7 @@
 <?php
     endif;
 ?>
-<?php
-    if(isset($_SESSION["membre"])) :
-    if($nb_articles != null):
-?>
-        <li>
-            <a href="Compte-utilisateur"><i class="fas fa-shopping-cart"></i><span class="badge badge-default"><?= $nb_articles ?></span</a>
-        </li>
-<?php
-    else :
-?>
-        <li>
-            <a href="Compte-utilisateur"><i class="fas fa-shopping-cart"></i><span class="badge badge-default"><?= $nb_articles = 0 ?></span</a>
-        </li>
-<?php
-    endif;
-    endif;
-?>
+
             </ul>
         </nav>
 
@@ -113,6 +97,25 @@
             <div class="mask"></div>
             <form class="query" method="post" action="Recherche">
         <input class="search" type="search" name="query" placeholder="Trouvez..." value="<?php if(isset($_POST[" query
-                        "])) echo $_POST["query "]//laisser champs de recherche rempli ?>">
+                        "])) echo $_POST["query "] ?>">
     </form>
+     <!-- <?php
+    if(isset($_SESSION["membre"])) :
+        if($nb_articles != null):
+    ?>
+          
+                <a href="Compte-utilisateur"><i class="fas fa-shopping-cart"></i><span class="badge badge-default"><?= $nb_articles ?></span</a>
+            
+    <?php
+        else :
+    ?>
+           
+                <a href="Compte-utilisateur"><i class="fas fa-shopping-cart"></i><span class="badge badge-default"><?= $nb_articles = 0 ?></span</a>
+           
+    <?php
+        endif;
+        endif;
+    ?> -->
     </header>
+
+   

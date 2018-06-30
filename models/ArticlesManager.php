@@ -1,7 +1,6 @@
 <?php
-require_once ('models/Model.php');
-
-use Projet5\models;
+namespace Rossi56\models;
+use \Rossi56\models\Model;
 
 
 /**
@@ -184,7 +183,7 @@ class ArticlesManager extends Model
     //     $bdd = $this->getBdd();
         
     //     $req = $bdd->query("SELECT id, titre, extrait, description, img, price, DATE_FORMAT (publication, '%d/%m/%Y ') AS publication, image1, image2, realisation, favoris, livraison, country, livraisonPrice, retours, disponibility, id_membre, id_market, id_category, id_subCategory FROM articles INNER JOIN membres ON articles.id = membre.id ORDER BY articles.id DESC limit 0,5");
-    //     $res = $req->fetchAll(PDO::FETCH_ASSOC);
+    //     $res = $req->fetchAll(\\PDO::FETCH_ASSOC);
 
     //     return $res;
     // }

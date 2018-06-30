@@ -1,6 +1,3 @@
-<?php session_start();
- $title = "Ma p'tite boutique";
- ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,9 +23,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <title>
-        <?= $title ?>
-    </title>
+    <title>Hand Made Shop </title>
 </head>
 
 <body>
@@ -41,7 +36,7 @@
                 <h2>Créez</h2>
                 <h2>Vendez</h2>
                 <p class=""lead>
-                <a class="btn btn-primary btn-lg hvr-curl-top-left" href="Accueil"role="button">Bienvenue dans la boutique</a>
+                <a class="btn btn-primary btn-lg hvr-curl-top-left" href="Accueil">Bienvenue dans la boutique</a>
                </p>
 
         </section>
@@ -50,5 +45,5 @@
         </section>
 
     </main>
-    <script src="public/js/script.js"></script>
-    <script src="public/js/split.js"></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 <?php ob_start() ?>
 
-<h2>Ma p'tite Boutique vous remercie pour votre achat</h2>
+<h2>Hand made shop vous remercie pour votre achat</h2>
 <img class="logo" src="public/img/market/logo3.png" alt="logo">
 
  <p>

@@ -46,6 +46,7 @@ header {
             margin-top: -30px;
         }
         ul {
+            top: 30px;
             display: flex;
             list-style: none;
             margin: 0;
@@ -57,11 +58,12 @@ header {
             background-color: rgb(211, 206, 206);
             border: 1px solid $colorText;
             li {
+               
                 display: flex;
                 margin: 0;
                 padding: 0;
                 display: block;
-                width: 250px;
+                width: 200px;
                 background-color: white;
             }
             a {

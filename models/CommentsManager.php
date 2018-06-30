@@ -1,8 +1,7 @@
 <?php
-require_once ('models/Model.php');
+namespace Rossi56\models;
+use \Rossi56\models\Model;
 
-
-use Projet5\models;
 
 
 /**

@@ -1,7 +1,7 @@
-<?php ob_start() ?>
+<?php ob_start()
+?>
 
 <h2>Articles en vente sur "<?= $market[0]['marketName'] ?>"</h2>
-<img class="logo" src="public/img/market/logo3.png" alt="logo">
     <img class="logoMarket" src="public/img/market/<?= $market[0]["imgPres"] ?>" alt=" <?= $market[0]["imgPres"] ?>">
         <div class="all">
   
@@ -17,6 +17,8 @@
                             <p class="card-text"><?= $article["extrait"]; ?> </p>
                             <p class="price"><span>Prix:</span> <?= $article["price"]; ?> euros</p> 
                                 <a class="btn" href="Article&id=<?= $article[0];  ?>">Plus d'infos...</a>
+                                <h4 class="card-title">Supprimer l'article</h4>
+                                <a class="erase btn" href="Supprimer-un-article&id=<?= $article[0] ?>"><i class="fas fa-times-circle"></i></a>
                     </div>  
             </div>
         </div>

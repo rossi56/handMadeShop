@@ -3,6 +3,10 @@
     flex-direction: column;
     width: 100%;
     min-height: 800px;
+    .logo{
+        width: 20%;
+        align-self: center;
+    }
 }    
 .logoMarket{
         align-self: center;
@@ -26,7 +30,7 @@
         }
         
         .jumbotron {
-            border-image: url("../img/2.jpg")30/10px;
+            border: 2px solid $colorSite;
             position: relative;
             margin-top: 50px;
             margin-bottom: 100px;
@@ -64,12 +68,8 @@
                 margin-top: 10px;
                 color: white;
                 background-color: $colorSite;
-                font-size: 18px;
-               
-                
-                
+                font-size: 18px; 
                 &:hover {
-                    background-color: $colorSite2;
                     color: white;
                     border: 1px solid white;
                 }
@@ -356,6 +356,7 @@
                 color: white;
             }
         }
+        
         .price {
             color: $colorSite;
             margin-top: 15px;
@@ -412,6 +413,7 @@
     align-self: center;
     margin-bottom: 50px;
 }
+
 
 
 

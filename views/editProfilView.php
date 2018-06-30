@@ -1,4 +1,9 @@
-<?php ob_start();
+<?php 
+namespace Rossi56\controllers;
+use \Rossi56\models\MembresManager;
+
+ob_start();
+
 $user = ControllerMembres::getUser()
 ?>
 <h2>Edition de mes informations personnelles</h2>

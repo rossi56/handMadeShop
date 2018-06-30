@@ -1,5 +1,6 @@
 <?php
-require_once ('models/Model.php');
+namespace Rossi56\models;
+use \Rossi56\models\Model;
 
 
 /**
@@ -252,7 +253,7 @@ class MembresManager extends Model
 
         $req = $bdd->prepare('SELECT articles.id, membres.* FROM articles INNER JOIN membres ON articles.id_membre = membres.id WHERE articles.id = ? ');
         $req->execute([$id]);
-        $res = $req->fetchAll(PDO::FETCH_ASSOC);
+        $res = $req->fetchAll(\PDO::FETCH_ASSOC);
         return $res;
 
     }

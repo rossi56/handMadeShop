@@ -19,8 +19,8 @@ require_once "PayPalPayment.php";
         
         
 
-        $bdd = new PDO('mysql:dbname=boutique; host=localhost; charset=utf8', 'root', ''); 
-        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+        $bdd = new \PDO('mysql:dbname=boutique; host=localhost; charset=utf8', 'root', ''); 
+        $bdd->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);
         $payment = $bdd->prepare('SELECT * FROM paiements WHERE payment_id = ?');
         $payment->execute(array($paymentID));
         $payment = $payment->fetch();

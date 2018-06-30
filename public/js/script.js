@@ -1,5 +1,26 @@
+/**************************************ScrollREveal****************************/
 
+var sr = ScrollReveal();
 
+sr.reveal('.title', {
+  distance: '50px',
+  opacity: 0.5
+});
+
+sr.reveal('h2', {
+  distance: '20px',
+  opacity: 0.5
+});
+
+sr.reveal('.card', {
+  reset: true,
+}, 150);
+
+sr.reveal('.comments', {
+  reset: true,
+  origin: 'left',
+  distance: '300px'
+},500);
 /***********************************Identity card**************************** */
 
 $(document).ready(function()

@@ -2,7 +2,7 @@
 ?>
 <section class="accueil">
     <div class="jumbotron">
-        <h1 class="display-3">Ma p'tite boutique</h1>
+        <h1 class="display-3 title">Hand made shop</h1>
             <p class="lead">Imaginez, Créez, Vendez !</p>
                 <img class="logo" src="public/img/market/logo3.png" alt="logo">
 <hr class="my-4">
@@ -33,7 +33,7 @@
       
     </div>
     <div class="accueilResponsive">
-    <h1 class="display-3">Ma p'tite boutique</h1>
+    <h1 class="display-3">Hand made shop</h1>
             <p class="lead">Imaginez, Créez, Vendez !</p>
                 <img class="logo" src="public/img/market/logo3.png" alt="logo">
                 <p class="lead">
@@ -42,8 +42,8 @@
 </p>
     <h2>Trouvez et vendez facilement ce que vous aimez !</h2>
     <div class="descResponsive">
-        <h3>L'économie selon "Ma p'tite boutique"</h3>
-                <p>La vision de l'économie que promeut "Ma p'tite boutique" voit les entrepreneurs de la création s'épanouir en
+        <h3>L'économie selon "Hand made shop"</h3>
+                <p>La vision de l'économie que promeut "Hand made shop" voit les entrepreneurs de la création s'épanouir en
                 vendant des articles à leurs voisins comme à des curieux qui vivent sur un autre continent et les consommateurs
                 dénicher des objets hors du commun fabriqués par des personnes avec qui ils pourront tisser des liens allant
                 bien au-delà de l'échange commercial.</p>
@@ -66,8 +66,8 @@
             </div>
         </div>
         <div class="pres-right">
-            <h2>L'économie selon "Ma p'tite boutique"</h2>
-                <p>La vision de l'économie que promeut "Ma p'tite boutique" voit les entrepreneurs de la création s'épanouir en
+            <h2>L'économie selon "Hand made shop"</h2>
+                <p>La vision de l'économie que promeut "Hand made shop" voit les entrepreneurs de la création s'épanouir en
                 vendant des articles à leurs voisins comme à des curieux qui vivent sur un autre continent et les consommateurs
                 dénicher des objets hors du commun fabriqués par des personnes avec qui ils pourront tisser des liens allant
                 bien au-delà de l'échange commercial.</p>

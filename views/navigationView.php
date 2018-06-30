@@ -1,5 +1,5 @@
 <!-- <nav>
-    <a class="line" href="Accueil">Ma p'tite boutique</a>
+    <a class="line" href="Accueil">Hand made shop</a>
     <form class="query" method="post" action="Recherche">
         <input class="search" type="search" name="query" placeholder="Trouvez..." value="<?php if(isset($_POST[" query
                         "])) echo $_POST["query "]//laisser champs de recherche rempli ?>">

@@ -1,5 +1,5 @@
 <?php ob_start() ?>
-<h2>Bienvenue sur le Blog de "Ma p'tite Boutique"</h2>
+<h2>Bienvenue sur le Blog de "Hand made shop"</h2>
 <img class="logo" src="public/img/market/logo3.png" alt="logo">
 <div class="all">
 

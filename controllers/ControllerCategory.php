@@ -1,8 +1,13 @@
 <?php
-require_once 'models/CategoryManager.php';
-require_once 'models/CaddieManager.php';
-require_once 'models/ArticlesManager.php';
+namespace Rossi56\controllers;
 
+use \Rossi56\models\ArticlesManager;
+use \Rossi56\models\CommentsManager;
+use \Rossi56\models\BlogManager;
+use \Rossi56\models\CaddieManager;
+use \Rossi56\models\CategoryManager;
+use \Rossi56\models\MembresManager;
+use \Rossi56\models\MarketManager;
 
 
 

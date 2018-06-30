@@ -1,9 +1,9 @@
 <?php ob_start() ?>
 <section class="compte">
-<img class="logo" src="public/img/market/logo3.png" alt="logo">
+
 <div class="articles">
     <h2>Bonjour <span style='font-weight: bold;'>"<?= $compte["pseudo"]; ?>"</span>  <br><br> Bienvenue sur votre espace personnel ! </h2>
-    
+    <img class="logo" src="public/img/market/logo3.png" alt="logo">
         <ul class='space'> <p>Sur cet espace, vous pouvez :</p> 
             <li><i class="fas fa-edit"></i>Gérez votre profil</li>
             <li><i class="fas fa-chart-bar"></i>Gérez vos différentes boutiques</li>
@@ -83,7 +83,7 @@
 
 <?php
     endforeach;
-    ?>
+?>
     </div>
     <hr>
 <section class="caddie">
