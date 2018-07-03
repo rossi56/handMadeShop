@@ -88,7 +88,7 @@
     <hr>
 <section class="caddie">
 <?php
-    if(count($articles) > 0) :
+    if(count($articles)>0) :
 ?>
         <h3>Votre Caddie</h3>
         <table class="table table-striped">
@@ -120,7 +120,7 @@
       
       </td>
       <td><a class="erase " href="Supprimer&id=<?= $article["id_article"] ?>"><i class="fas fa-times-circle"></i></a></td>
-      <td><?= $count ?> euros</td>
+      <td><?= $article["price"]*$article["quantite"] ?> euros</td>
     </tr>
 <?php
     endforeach;
@@ -130,21 +130,43 @@
     <td></td>
     <td></td>
     <td><span> Frais de livraison:</span></td>
-    <td><?= $article['livraisonPrice'] ?> euros</td>
+<?php
+ if( $nb_articles == 1):
+?>
+ <td><?=  $article['livraisonPrice'] ?> euros</td>
+
+<?php
+else:
+?>
+<td>10.00 euros</td>
+<?php
+endif;
+?>
     </tr>
     <tr>
     <td></td>
     <td></td>
     <td></td>
     <td><span> TVA (20%):</span></td>
-    <td><?= ( $article['livraisonPrice'] + $count)*0.2 ?> euros</td>
+    <td><?=   $count*0.2 ?> euros</td>
     </tr>
     <tr>
     <td></td>
     <td></td>
     <td></td>
     <td><span> Prix Total:</span></td>
-    <td><?= ($article['livraisonPrice'] + $count)+($article['livraisonPrice'] + $count)*0.2 ?> euros</td>
+<?php
+ if( $nb_articles == 1):
+?>
+    <td><?= $article['livraisonPrice'] + $count +  $count*0.20 ?> euros</td>
+
+<?php
+else:
+?>
+<td> <?= 10 + $count +  $count*0.20 ?> euros</td>
+<?php
+endif;
+?>
     </tr>
   </tbody>
 

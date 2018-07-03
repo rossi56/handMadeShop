@@ -103,6 +103,7 @@ class ControllerMembres
     public function getPageConnect()
     {
         $categories = $this->category->getCategories();
+        
         require ('views/connexionView.php');             
     }
  

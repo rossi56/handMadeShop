@@ -8,6 +8,18 @@ use \Rossi56\models\Model;
  */
 class CaddieManager extends Model
 {
+
+  public function getCaddieByArticle($id)
+    {
+      $bdd = $this->getBdd();
+
+      $req = $bdd->prepare('SELECT * FROM caddie where id_article = ?');
+      $req->execute([$id]);
+
+      $res = $req->fetch();
+      return $res;
+    }
+
     /**
      * Fonction récupération articles caddie
      *
@@ -17,11 +29,11 @@ class CaddieManager extends Model
     {
       $bdd =$this->getBdd();
       
-        $articles = $bdd->prepare("SELECT caddie.*, articles.* FROM caddie INNER JOIN articles ON caddie.id_article = articles.id AND caddie.id_membre = ? ");
-        $articles->execute([$_SESSION["membre"]]);
+        $req = $bdd->prepare("SELECT caddie.*, articles.* FROM caddie INNER JOIN articles ON caddie.id_article = articles.id AND caddie.id_membre = ? ");
+        $req->execute([$_SESSION["membre"]]);
 
-        $articles = $articles->fetchAll(\PDO::FETCH_ASSOC);
-          return $articles;
+        $res = $req->fetchAll(\PDO::FETCH_ASSOC);
+          return $res;
     }
 
      /**
@@ -43,7 +55,7 @@ class CaddieManager extends Model
             "id_membre" => $_SESSION["membre"],
             "price" => $price,
             "quantite" => $quantite,
-            "price_total" => $price*$quantite
+            "price_total" => round($price*$quantite,2)
             ]);    
     }
     
@@ -134,6 +146,9 @@ class CaddieManager extends Model
       $req->execute([$id_membre]);
 
       $res = $req->fetch()[0];
+     
       return $res;
     }
+
+
 }

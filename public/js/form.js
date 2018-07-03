@@ -36,11 +36,6 @@ $(document).ready(function(){
         $('.helpSubCategory').text('');
         $('.helpMail').text('');
 
-
-        
-      
-
-
       });
      
   });

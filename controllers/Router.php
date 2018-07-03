@@ -52,7 +52,6 @@ class Router {
   {
     try 
     {
-        var_dump($_GET); 
       if (isset($_GET['action']))
        {
         if ($_GET['action'] == 'Chapitre') 
@@ -70,14 +69,30 @@ class Router {
         {   
             if(isset($_SESSION['membre']))
             {
-                
+                if(isset($_POST['parPage']))
+                {
                     $this->ctrlBlog->getChapitresPage($_GET['page'], $_POST['parPage'],  $_SESSION['membre']); 
+
+                }
+                else
+                {
+                    $this->ctrlBlog->getChapitresPage($_GET['page'], $_POST['parPage'] = 4,  $_SESSION['membre']); 
+
+                }
+                
                
             }
             else
-            {
-                $this->ctrlBlog->getChapitresPage($_GET['page'], $_POST['parPage'],  $_SESSION['membre']=null); 
+            {if(isset($_POST['parPage']))
+                {
+                    $this->ctrlBlog->getChapitresPage($_GET['page'], $_POST['parPage'],  $_SESSION['membre'] = null); 
 
+                }
+                else
+                {
+                    $this->ctrlBlog->getChapitresPage($_GET['page'], $_POST['parPage'] = 4,  $_SESSION['membre'] = null); 
+
+                }
             }   
 
           
@@ -86,13 +101,30 @@ class Router {
         {   
             if(isset($_SESSION['membre']))
             {
-                
-                    $this->ctrlArticles->getArticlesPage($_GET['page'], $_POST['parPage'], $_SESSION['membre']); 
+                if(isset($_POST['parPage']))
+                {
+                    $this->ctrlArticles->getArticlesPage($_GET['page'], $_POST['parPage'], $_SESSION['membre']);
+
+                }
+                else
+                {
+                $this->ctrlArticles->getArticlesPage($_GET['page'], $_POST['parPage'] = 10, $_SESSION['membre']);
+
+                }
+                     
                  
             }
             else
-            {
-                $this->ctrlArticles->getArticlesPage($_GET['page'], $_POST['parPage'], $_SESSION['membre']=null);    
+            { 
+                if(isset($_POST['parPage']))
+                {
+                $this->ctrlArticles->getArticlesPage($_GET['page'], $_POST['parPage'] , $_SESSION['membre']=null); 
+                } 
+                else
+                {
+                $this->ctrlArticles->getArticlesPage($_GET['page'], $_POST['parPage'] = 10, $_SESSION['membre'] = null);
+
+                }  
 
             }
             
@@ -388,8 +420,6 @@ class Router {
     }
       catch (Exception $e) 
       {
-          var_dump($e);
-          die();
        header("Location: home.php");
       }
     }

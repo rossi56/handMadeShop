@@ -15,6 +15,8 @@ class PayPalPayment
 		$this->client_secret = "EGvBpdVftF9p5_NEm2lbDpUcUjWw-zfL_kThxeum8lSqt9rqJe76nykJD-bcQsvLbYcdk_qJALaYl2rQ";
 		$this->access_token = "";
 	}
+
+	
 	/**
 	 * Définit le mode Sandbox / Live du paiement : 1 (ou true) pour le mode Sandbox, 0 (ou false) pour le mode Live
 	 */

@@ -65,23 +65,48 @@
                 </li> 
                 <li>
                     <a class="hvr-underline-from-center" href="Deconnexion">Deconnexion</a>
-                </li> 
+                </li>
+
+<?php
+    if($nb_articles != null):
+?>
+          
+                <a href="Compte-utilisateur"><i class="fas fa-shopping-cart"></i><span class="badge badge-default"><?= $nb_articles ?></span></a>
+            
 <?php
     else :
 ?>
+           
+                <a href="Compte-utilisateur"><i class="fas fa-shopping-cart"></i><span class="badge badge-default"><?= $nb_articles = 0 ?></span></a>  
+
+<?php
+endif;
+    if($_SESSION['membre'] == 1) :
+?>
                 <li>
+                    <a class="hvr-underline-from-center" href="Administration">Administration</a>
+                </li>
+
+   
+   
+               
+<?php
+    endif;
+
+else:
+?>
+
+  <li>
                     <a class="hvr-underline-from-center" href="Page-de-connexion">Se connecter</a>
                 </li>
                 <li>
                     <a class="hvr-underline-from-center" href="Inscription">S'inscrire</a>
                 </li>
-                <li>
-                    <a class="hvr-underline-from-center" href="Administration">Administration</a>
-                </li>
-
-<?php
-    endif;
+                <?php
+endif;
 ?>
+
+
 
             </ul>
         </nav>
@@ -96,26 +121,10 @@
             </div>
             <div class="mask"></div>
             <form class="query" method="post" action="Recherche">
-        <input class="search" type="search" name="query" placeholder="Trouvez..." value="<?php if(isset($_POST[" query
+                <input class="search" type="search" name="query" placeholder="Trouvez..." value="<?php if(isset($_POST[" query
                         "])) echo $_POST["query "] ?>">
-    </form>
-     <!-- <?php
-    if(isset($_SESSION["membre"])) :
-        if($nb_articles != null):
-    ?>
-          
-                <a href="Compte-utilisateur"><i class="fas fa-shopping-cart"></i><span class="badge badge-default"><?= $nb_articles ?></span</a>
-            
-    <?php
-        else :
-    ?>
-           
-                <a href="Compte-utilisateur"><i class="fas fa-shopping-cart"></i><span class="badge badge-default"><?= $nb_articles = 0 ?></span</a>
-           
-    <?php
-        endif;
-        endif;
-    ?> -->
+            </form>
+
     </header>
 
    

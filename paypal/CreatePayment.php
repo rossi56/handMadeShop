@@ -1,6 +1,8 @@
 <?php
-require_once "PayPalPayment.php";
 
+use Rossi56\models\CaddieManager;
+session_start();
+require_once "PayPalPayment.php";
 
 
 
@@ -10,18 +12,33 @@ require_once "PayPalPayment.php";
 
             $bdd = new \PDO('mysql:dbname=boutique; host=localhost; charset=utf8', 'root', '');
             $bdd->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);     
-                $articles = $bdd->query("SELECT caddie.*, articles.* FROM caddie INNER JOIN articles ON caddie.id_article = articles.id ");
-                $articles = $articles->fetch(\PDO::FETCH_ASSOC);
+                $articles = $bdd->prepare("SELECT caddie.*, articles.* FROM caddie INNER JOIN articles ON caddie.id_article = articles.id WHERE caddie.id_membre = ?");
+                $articles->execute([$_SESSION['membre']]);
+                $articles = $articles->fetchAll();
             
-
+            
+var_dump(count($articles));
             $payer = new PayPalPayment;
             $payer->setSandboxMode(1);
             $payer->setClientID("AZ6ZIzEGMoxHmqaZOlo021A8P4JcyGj2P6_yyGsgx2xwYlKjufkdUcYMTNqxEdwMjykpX47VelRbTkig");
             $payer->setSecret("EGvBpdVftF9p5_NEm2lbDpUcUjWw-zfL_kThxeum8lSqt9rqJe76nykJD-bcQsvLbYcdk_qJALaYl2rQ");
             
-            $req = $bdd->query("SELECT sum(price_total) FROM caddie");
+            $req = $bdd->prepare("SELECT sum(price_total) FROM caddie where id_membre = ?");
+            $req->execute([$_SESSION['membre']]);
             $count = $req->fetch(\PDO::FETCH_ASSOC);
-         
+
+            $nb_articles = $bdd->prepare("SELECT sum(quantite) FROM caddie WHERE id_membre = ?");
+            $nb_articles->execute([$_SESSION['membre']]);
+            $nb_articles = $nb_articles->fetch()[0];
+
+            if($nb_articles == 1)
+            {
+                  $articles['livraisonPrice'] = $articles['livraisonPrice'];
+            }
+           else
+           {
+            $articles['livraisonPrice'] = '10';
+           }
 
             $payment_data = [
             "intent" => "sale",
@@ -35,19 +52,19 @@ require_once "PayPalPayment.php";
             "transactions" => [
                   [
                   "amount" => [
-                        "total" => strval($count['sum(price_total)']+(($articles['livraisonPrice']+$count['sum(price_total)'])*0.2)+$articles['livraisonPrice']),
+                        "total" => strval($count['sum(price_total)']*0.20 + $articles['livraisonPrice'] + $count['sum(price_total)']),
                         "currency" => "EUR",
                         "details" => [
-                              "subtotal" =>  strval($count['sum(price_total)']),
-                              "tax" => strval(($articles['livraisonPrice']+$count['sum(price_total)'])*0.2),
-                              "shipping" =>  strval($articles['livraisonPrice'])
+                              "subtotal" => strval($count['sum(price_total)']),
+                              "tax" => strval($count['sum(price_total)']*0.20),
+                              "shipping" => $articles['livraisonPrice']
                         ]
                   ],
                   "item_list" => [
                         "items" => [
                         [
                               "sku" => $articles['id_article'],
-                              "quantity" => strval($articles['quantite']),
+                              "quantity" => strval($nb_articles),
                               "name" => $articles['titre'],
                               "price" =>strval($articles['price']),
                               "currency" => "EUR",

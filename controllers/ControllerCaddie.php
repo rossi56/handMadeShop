@@ -69,6 +69,7 @@ class ControllerCaddie
     public function articlePlus($id) 
     {
       $article = $this->caddie->articlePlus($id);
+
       header("Location: Compte-utilisateur");
        
     }
@@ -93,10 +94,18 @@ class ControllerCaddie
      */
     public function articleMoins($id) 
     {
-        
-       
-            $article = $this->caddie->articleMoins($id);
-            header("Location: Compte-utilisateur");
+        $article = $this->caddie->getCaddieByArticle($id);
+        if($article['quantite'] == '1'){
+
+           
+             $this->caddie->supprimer($id);
+        }
+        else
+        { $article = $this->caddie->articleMoins($id);
+
+    }
+      header("Location: Compte-utilisateur");
+           
     }
     
     public function getFacture($id_membre)
