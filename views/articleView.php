@@ -115,7 +115,7 @@ ob_start() ?>
                 <a href=""><i class="fab fa-instagram"></i></a>
                 <a href=""><i class="fab fa-linkedin"></i></a>
             </div>
-          <form class="email-form form"  method="post" action="Contact">
+          <form class="email-form "  method="post" action="Contact">
           <input type="text" name="prenom" placeholder="Votre Prénom *" value="<?php if(isset($_POST[" prenom "])) echo $_POST["prenom"] ?>">
           <input type="text" name="nom" placeholder="Votre Nom *" value="<?php if(isset($_POST[" nom "])) echo $_POST["nom "] ?>">
           <input type="email" name="email" placeholder="Votre e-mail *" value="<?php if(isset($_POST[" email "])) echo $_POST["email"] ?>">

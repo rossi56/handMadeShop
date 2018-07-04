@@ -45,8 +45,7 @@
     <div class="descResponsive">
         <h3>L'économie selon "Hand made shop"</h3>
                 <p>La vision de l'économie que promeut "Hand made shop" voit les entrepreneurs de la création s'épanouir en
-                vendant des articles à leurs voisins comme à des curieux qui vivent sur un autre continent et les consommateurs
-                dénicher des objets hors du commun fabriqués par des personnes avec qui ils pourront tisser des liens allant
+                vendant des articles à leurs voisins comme à des curieux qui vivent sur un autre continent avec qui ils pourront tisser des liens allant
                 bien au-delà de l'échange commercial.</p>
 
     </div>
@@ -83,7 +82,7 @@
         </article>
         <article class="description">
             <h3>
-                <i class="fas fa-check"></i>Des vendeurs indépendants</h3>
+                <i class="fas fa-check"></i>De l'indépendant</h3>
             <p class="p2">Passez commande à des personnes qui ont mis tout leur coeur dans la fabrication de choses vraiment spéciales.
                 </p>
         </article>

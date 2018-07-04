@@ -1,17 +1,29 @@
 footer {
     background-image: url('../img/back.png');
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 170px;
     border-top: 1px solid grey;
     text-align: center;
     @media screen and (max-width: 22.5em) and (max-width: 48em){
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         text-align: center;
     }
     @media screen and (max-width: 48em) {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
        text-align: center;
     }
     

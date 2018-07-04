@@ -1,18 +1,31 @@
 .allArticles {
     margin-top: 50px;
     margin-bottom: 200px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
     @media screen and (max-width: 22.5em) {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
     }
     .card-deck {
         width: 30%;
         .card {
             margin-top: 50px;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            flex-direction: column;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
             h4 {
                 margin-top: 15px;
                 padding-left: 15px;
@@ -39,17 +52,36 @@
     font-size: 45px;
     padding: 25px;
     opacity: 1;
-    animation: pulse 0.55s infinite ease-in-out;
+    -webkit-animation: pulse 0.55s infinite ease-in-out;
+            animation: pulse 0.55s infinite ease-in-out;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 12px rgba(122, 202, 204, 0.2);
+                box-shadow: 0 0 12px rgba(122, 202, 204, 0.2);
+    }
+    50% {
+        -webkit-box-shadow: 0 0 12px rgba(122, 202, 204, 0.9);
+                box-shadow: 0 0 12px rgba(122, 202, 204, 0.9);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 12px rgba(122, 202, 204, 0.2);
+                box-shadow: 0 0 12px rgba(122, 202, 204, 0.2);
+    }
 }
 
 @keyframes pulse {
     0% {
-        box-shadow: 0 0 12px rgba(122, 202, 204, 0.2);
+        -webkit-box-shadow: 0 0 12px rgba(122, 202, 204, 0.2);
+                box-shadow: 0 0 12px rgba(122, 202, 204, 0.2);
     }
     50% {
-        box-shadow: 0 0 12px rgba(122, 202, 204, 0.9);
+        -webkit-box-shadow: 0 0 12px rgba(122, 202, 204, 0.9);
+                box-shadow: 0 0 12px rgba(122, 202, 204, 0.9);
     }
     100% {
-        box-shadow: 0 0 12px rgba(122, 202, 204, 0.2);
+        -webkit-box-shadow: 0 0 12px rgba(122, 202, 204, 0.2);
+                box-shadow: 0 0 12px rgba(122, 202, 204, 0.2);
     }
 }

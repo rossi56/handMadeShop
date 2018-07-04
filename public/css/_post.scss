@@ -29,7 +29,8 @@
     }
     table {
         border: 2px solid $colorSite;
-        align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
         z-index: 100;
         width: 40%;
         border-radius: 5px;
@@ -79,6 +80,7 @@
         color: #999;
         text-decoration: none;
         padding: 45px;
+        -webkit-transition:  .25s ease-in-out;
         transition:  .25s ease-in-out;
     }
     

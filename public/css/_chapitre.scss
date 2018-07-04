@@ -1,7 +1,14 @@
 .vente {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     h1 {
         font-family: "Lato", cursive;
         font-size: 35px;
@@ -11,6 +18,8 @@
     }
     #carouselExampleIndicators {
         width: 80%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         margin-bottom: 75px;
         .carousel-inner {
@@ -64,18 +73,27 @@
     }
     .article {
         width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         margin-bottom: 75px;
         @media screen and (max-width: 22.5em), (max-width: 48em) {
-            flex-direction: column;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
             margin-top: -90px;
             font-size: 14px;
         }
         .achat {
             padding: 25px;
-            border-image: url("../img/logo2.png")5/3px;
-            box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.75);
+            -o-border-image: url("../img/logo2.png")5/3px;
+               border-image: url("../img/logo2.png")5/3px;
+            -webkit-box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.75);
+                    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.75);
             width: 45%;
             margin-top: 50px;
             @media screen and (max-width: 22.5em), (max-width: 48em) {
@@ -111,6 +129,7 @@
                 border: 1px solid $colorSite;
                 padding: 15px 35px;
                 text-align: center;
+                -webkit-transition: .45s ease-in-out;
                 transition: .45s ease-in-out;
                 @media screen and (max-width: 22.5em) {
                     width: 90%;
@@ -138,7 +157,9 @@
             overflow: hidden;
             margin: 0 auto;
             background-color: white;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            -webkit-transition: all 0.7s ease-in-out;
             transition: all 0.7s ease-in-out;
             @media screen and (max-width: 22.5em), (max-width: 48em) {
                 margin-top: 70px;
@@ -154,6 +175,7 @@
             width: 100%;
             height: 150px;
             border-bottom: solid 1px lightgrey;
+            -webkit-transition: all 0.7s ease-in-out;
             transition: all 0.7s ease-in-out;
         }
         .banner.active {
@@ -167,7 +189,9 @@
             background-color: white;
             margin: 0 auto;
             top: 35px;
-            box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+                    box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+            -webkit-transition: top 0.7s ease-in-out, background 0.15s ease;
             transition: top 0.7s ease-in-out, background 0.15s ease;
         }
         .photo.active {
@@ -180,6 +204,7 @@
             margin-top: 57px;
             margin-bottom: 30px;
             font-size: 20px;
+            -webkit-transition: all 0.7s ease-in-out;
             transition: all 0.7s ease-in-out;
             a {
                 color: $colorSite;
@@ -210,6 +235,7 @@
             background-color: $colorSite;
             font-size: 12px;
             text-transform: uppercase;
+            -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
         }
         button.contact:hover {
@@ -225,17 +251,20 @@
             margin-top: 350px;
             text-align: center;
             position: absolute;
+            -webkit-transition: all 1.5s ease-in-out;
             transition: all 1.5s ease-in-out;
         }
         .social-media-banner.active {
             opacity: 0;
             visibility: hidden;
+            -webkit-transition: all 0.1s ease-in-out;
             transition: all 0.1s ease-in-out;
         }
         .fa-twitter-square,
         .fa-facebook-square,
         .fa-instagram,
         .fa-linkedin {
+            -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
             font-size: 35px;
             opacity: 0.7;
@@ -253,11 +282,13 @@
             overflow: hidden;
             width: 100%;
             z-index: -1;
+            -webkit-transition: all 0.5s ease-in-out;
             transition: all 0.5s ease-in-out;
         }
         .email-form.active {
             height: 310px;
             z-index: 3;
+            -webkit-transition: all 1s ease-in-out;
             transition: all 1s ease-in-out;
         }
         .email-form input {
@@ -270,6 +301,7 @@
             margin-top: 25px;
             height: 30px;
             display: block;
+            -webkit-transition: all 0.2s ease-in-out;
             transition: all 0.2s ease-in-out;
         }
         .email-form input:focus,
@@ -291,6 +323,7 @@
             margin-top: 20px;
             border: 1px solid #dadee5;
             font-family: inherit;
+            -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
         }
         .email-form button {
@@ -299,9 +332,16 @@
     }
     .description {
         width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         text-align: justify;
         @media screen and (max-width: 22.5em) {
                 margin-top: -70px;
@@ -324,6 +364,7 @@
             border: 1px solid $colorSite;
             width: 30%;
             padding: 10px 10px;
+            -webkit-transition: .45s ease-in-out;
             transition: .45s ease-in-out;
             &:hover {
                 background-color: $colorSite;

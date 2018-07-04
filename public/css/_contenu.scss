@@ -1,8 +1,13 @@
 main {
     height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     @media screen and (max-width: 22.5em),(max-width: 36em) {
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
     }
     #left {
         position: relative;
@@ -11,7 +16,10 @@ main {
         height: 100%;
         background-color: $colorSite;
         @media screen and (max-width: 22.5em),(max-width: 36em) {
-            flex-direction: column;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
             height: 400px;
             width: 100%;
         }
@@ -45,10 +53,18 @@ main {
     #right {
         position: relative;
         width: 50%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         @media screen and (max-width: 22.5em),(max-width: 36em) {
-            flex-direction: column;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
             height: 400px;
             width: 100%;
         }
@@ -62,7 +78,8 @@ main {
             color: rgb(255, 230, 1);
             top: 40%;
             font-size: 65px;
-            align-self: center;
+            -ms-flex-item-align: center;
+                align-self: center;
             @media screen and (max-width: 22.5em),(max-width: 36em){
                 font-size: 35px;
                 top: 25%;

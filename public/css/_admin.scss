@@ -29,20 +29,40 @@
 
 .admin {
     z-index: 10;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     .commentaires {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
     }
     .signal {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         opacity: 1;
         visibility: visible;
-        animation: signal 1.5s infinite ease-in-out;
+        -webkit-animation: signal 1.5s infinite ease-in-out;
+                animation: signal 1.5s infinite ease-in-out;
         h2 {
             font-size: 35px;
             font-family: 'Satisfy', cursive;
@@ -176,7 +196,8 @@
             width: 60%;
             height: 50px;
             margin-top: 50px;
-            align-self: center;
+            -ms-flex-item-align: center;
+                align-self: center;
             &:focus {
                 color: $colorSite;
             }

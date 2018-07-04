@@ -7,7 +7,8 @@ header {
         vertical-align: middle;
         -webkit-transform: perspective(1px) translateZ(0);
         transform: perspective(1px) translateZ(0);
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                box-shadow: 0 0 1px rgba(0, 0, 0, 0);
         position: relative;
         overflow: hidden;
     }
@@ -37,16 +38,23 @@ header {
         right: 0;
     }
     #menu {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         width: 100%;
         list-style: none;
         padding-top: 15px;
         @media screen and (max-width: 22.5em), (max-width: 36em), (max-width: 48em) {
-            flex-direction: column;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
             margin-top: -30px;
         }
         ul {
             top: 30px;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             list-style: none;
             margin: 0;
@@ -58,6 +66,10 @@ header {
             background-color: rgb(211, 206, 206);
             border: 1px solid $colorText;
             li {
+               
+                display: -webkit-box;
+               
+                display: -ms-flexbox;
                
                 display: flex;
                 margin: 0;
@@ -77,6 +89,8 @@ header {
             }
         }
         li {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             padding: 0 0 10px 0;
             position: relative;
@@ -182,17 +196,9 @@ header {
         transition: opacity 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
         transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
         transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
-        @media screen and (max-width: 22.5em), (max-width: 36em), (max-width: 48em) {
+        @media screen and (max-width: 22.5em), (max-width: 36em), (max-width: 48em),(max-width: 62em)  {
             width: 65%;
         }
-        @media screen and (max-width: 62em) {
-            width: 45%;
-        }
-        // li {
-        //     @media screen and (max-width: 22.5em), (max-width: 36em), (max-width: 48em) {
-        //         margin-top: -5px;
-        //     }
-        // }
         @media screen and (min-width: 48em) {
             display: -webkit-box;
             display: -ms-flexbox;
@@ -238,13 +244,21 @@ header {
         .fa-shopping-cart {
             color: $colorSite;
             font-size: 25px;
+            @media screen and (max-width: 22.5em), (max-width: 36em), (max-width: 48em) {
+                color: rgb(255, 242, 118);
+                margin-top: 75px;
+            }
         }
         .badge-default {
             background-color: $colorSite;
             opacity: 1;
             font-size: 15px;
             color: white;
-            transform: opacity 0.35s ease-in-out;
+            -webkit-transform: opacity 0.35s ease-in-out;
+                    transform: opacity 0.35s ease-in-out;
+            @media screen and (max-width: 22.5em), (max-width: 36em), (max-width: 48em) {
+                color: rgb(255, 242, 118);
+            }
         }
         .connect {
             margin-left: 20%;
@@ -274,10 +288,18 @@ header {
             }
         }
         @media screen and (max-width: 48em) {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            transform: translateX(-100%);
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                    flex-direction: column;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            -webkit-transform: translateX(-100%);
+                    transform: translateX(-100%);
+            -webkit-transition: 0.35s ease-in-out;
             transition: 0.35s ease-in-out;
             height: 100%;
         }
@@ -451,7 +473,8 @@ header {
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     position: relative;
     overflow: hidden;
 }
