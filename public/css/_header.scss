@@ -290,28 +290,22 @@ header {
         box-sizing: border-box;
         border: 1px solid $colorSite;
         font-size: 16px;
-        background-image: url('../img/search.png');
         background-position: 20px 10px;
         background-repeat: no-repeat;
         padding: 10px 20px 10px 50px;
         -webkit-transition: width 1s ease-in-out;
         -webkit-transition: 1s ease-in-out width;
         transition: 1s ease-in-out width;
-        // @media screen and (max-width: 22.5em) {
-        //     display: none;
-        // }
-        // @media screen and (max-width: 48em) {
-        //     display: none;
-        // }
         &:focus {
             border: 1px solid $colorSite2;
             background-color: white;
         }
         @media screen and (max-width: 22.5em),(max-width: 36em),(max-width: 48em) {
-            width: 100%;
+            width: 150%;
             margin-top: 35px;
-            margin-left: 15%;
+            margin-left: -7%;
         }
+       
         
     }
     h1 {
@@ -339,6 +333,14 @@ header {
         margin-left: 10%;
         width: 60%;
         margin-top: -150px;
+        position: relative;
+        .fa-search{
+            margin-left: -66%;
+            color: #FFF276;
+            @media screen and (max-width: 22.5em),(max-width: 36em),(max-width: 48em) {
+              margin-left: -140%
+            }
+        }
     }
 }
 

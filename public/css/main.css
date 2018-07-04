@@ -2775,7 +2775,6 @@ header .search {
   box-sizing: border-box;
   border: 1px solid #7ACACC;
   font-size: 16px;
-  background-image: url("../img/search.png");
   background-position: 20px 10px;
   background-repeat: no-repeat;
   padding: 10px 20px 10px 50px;
@@ -2791,9 +2790,9 @@ header .search:focus {
 
 @media screen and (max-width: 22.5em), (max-width: 36em), (max-width: 48em) {
   header .search {
-    width: 100%;
+    width: 150%;
     margin-top: 35px;
-    margin-left: 15%;
+    margin-left: -7%;
   }
 }
 
@@ -2824,6 +2823,18 @@ header .query {
   margin-left: 10%;
   width: 60%;
   margin-top: -150px;
+  position: relative;
+}
+
+header .query .fa-search {
+  margin-left: -66%;
+  color: #FFF276;
+}
+
+@media screen and (max-width: 22.5em), (max-width: 36em), (max-width: 48em) {
+  header .query .fa-search {
+    margin-left: -140%;
+  }
 }
 
 .active .top {
@@ -2995,7 +3006,6 @@ main #left {
   }
 }
 
-main #left h1,
 main #left h2,
 main #left h3 {
   margin-top: 10%;
@@ -3005,7 +3015,6 @@ main #left h3 {
 }
 
 @media screen and (max-width: 22.5em), (max-width: 36em) {
-  main #left h1,
   main #left h2,
   main #left h3 {
     font-size: 65px;
@@ -3039,15 +3048,24 @@ main #left a {
 
 @media screen and (max-width: 22.5em), (max-width: 36em) {
   main #left a {
-    margin-top: 250px;
+    margin-top: 350px;
     color: #7ACACC;
     border: 1px solid #7ACACC;
-    font-size: 30px;
+    font-size: 25px;
+    padding: 15px 0;
   }
 }
 
 main #right {
+  position: relative;
   width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 @media screen and (max-width: 22.5em), (max-width: 36em) {
@@ -3057,7 +3075,6 @@ main #right {
         -ms-flex-direction: column;
             flex-direction: column;
     height: 400px;
-    opacity: 0.5;
     width: 100%;
   }
 }
@@ -3065,6 +3082,24 @@ main #right {
 main #right img {
   width: 100%;
   height: 100vh;
+}
+
+main #right .titre {
+  position: absolute;
+  font-family: 'Lato', cursive;
+  color: #ffe601;
+  top: 40%;
+  font-size: 65px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+@media screen and (max-width: 22.5em), (max-width: 36em) {
+  main #right .titre {
+    font-size: 35px;
+    top: 25%;
+  }
 }
 
 footer {

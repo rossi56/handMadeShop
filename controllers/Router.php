@@ -1,4 +1,4 @@
-<?php
+﻿<?php
  session_start();
 require 'vendor/autoload.php';
 use \Rossi56\controllers\ControllerAdmin;
@@ -56,13 +56,21 @@ class Router {
        {
         if ($_GET['action'] == 'Chapitre') 
         {   
-            if(isset($_SESSION['membre']))
+            if (isset($_GET['id']) && $_GET['id'] > 0) 
             {
-                $this->ctrlBlog->chapitreMembre($_GET['id'], $_SESSION['membre']);    
+                if(isset($_SESSION['membre']))
+                {
+                    $this->ctrlBlog->chapitreMembre($_GET['id'], $_SESSION['membre']);    
+                }
+                else
+                {
+                    $this->ctrlBlog->chapitre($_GET['id']); 
+                }
             }
             else
             {
-                $this->ctrlBlog->chapitre($_GET['id']); 
+              throw new Exception('Page introuvable');
+
             }
         }
         elseif ($_GET['action'] == 'Blog') 
@@ -98,7 +106,7 @@ class Router {
           
         }
         elseif ($_GET['action'] == 'Articles') 
-        {   
+        {             
             if(isset($_SESSION['membre']))
             {
                 if(isset($_POST['parPage']))
@@ -143,8 +151,21 @@ class Router {
         }
         elseif ($_GET['action'] == 'Article') 
         {
-            $this->ctrlOneArticle->article($_GET['id'], $_SESSION['membre']);
+             
+            if (isset($_GET['id']) && $_GET['id'] > 0) 
+            {
+                $this->ctrlOneArticle->article($_GET['id'], $_SESSION['membre']);  
+            } 
+            else
+            {
+              throw new Exception('Page introuvable');
+
+            }
                
+        }
+        elseif ($_GET['action'] == 'Hand-Made-Shop') 
+        {
+            require ('views/home.php');
         }
         elseif ($_GET['action'] == 'Commenter') 
         {
@@ -204,6 +225,10 @@ class Router {
         elseif ($_GET['action'] == 'Deconnexion') 
         {
             $this->ctrlMembres->deconnexion();         
+        }
+        elseif ($_GET['action'] == 'Facture') 
+        {
+            $this->ctrlCaddie->getFacture($_SESSION['membre']);         
         }
         elseif ($_GET['action'] == 'Les-sous-Categories') 
         {
@@ -414,13 +439,13 @@ class Router {
                 }
                 
 
-    }
-        else
-        throw new Exception("Aucune action");        
-    }
+            }
+                else
+                throw new Exception("Aucune action");        
+            }
       catch (Exception $e) 
       {
-       header("Location: home.php");
+       header ('Location: views/home.php');
       }
     }
 }

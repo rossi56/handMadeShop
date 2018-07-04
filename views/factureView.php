@@ -8,12 +8,13 @@
   <br>
 
  </p>
- <table class="table table-striped">
+ <table class="table table-striped" style='margin-top: 150px;'>
+   <h2>Voici le récapitulatif de votre commande <br><br> <?= $facture['last_name'] ?> <?= $facture['first_name']  ?></h2>
   <thead>
     <tr>
       <th scope="col">Votre n° de facture</th>
       <th scope="col">Total de la facture</th>      
-      <th scope="col"> Votre adresse mail</th>
+      <th scope="col"> Votre adresse mail Paypal</th>
     </tr>
   </thead>
   <tbody>
@@ -25,7 +26,7 @@
   </tbody>
 
     </table>
-<a href="Compte-utilisateur" style='margin-top: 50px;' class="btn">Retourner sur votre espace personnel.</a>
+<a href="Compte-utilisateur" style='margin-top: 150px; margin-bottom: 175px;' class="btn">Retourner sur votre espace personnel.</a>
 
 <?php $content = ob_get_clean(); ?>
 <?php require('templates/template.php'); ?>

@@ -14,10 +14,9 @@ require_once "PayPalPayment.php";
             $bdd->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);     
                 $articles = $bdd->prepare("SELECT caddie.*, articles.* FROM caddie INNER JOIN articles ON caddie.id_article = articles.id WHERE caddie.id_membre = ?");
                 $articles->execute([$_SESSION['membre']]);
-                $articles = $articles->fetchAll();
+                $articles = $articles->fetch(\PDO::FETCH_ASSOC);
+              
             
-            
-var_dump(count($articles));
             $payer = new PayPalPayment;
             $payer->setSandboxMode(1);
             $payer->setClientID("AZ6ZIzEGMoxHmqaZOlo021A8P4JcyGj2P6_yyGsgx2xwYlKjufkdUcYMTNqxEdwMjykpX47VelRbTkig");
@@ -76,6 +75,7 @@ var_dump(count($articles));
                   ]
             ]
             ];
+      
             $paypal_response = $payer->createPayment($payment_data);
             $paypal_response = json_decode($paypal_response);
             

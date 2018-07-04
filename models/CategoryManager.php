@@ -49,7 +49,7 @@ class CategoryManager extends Model
     {
         $bdd = $this->getBdd();
 
-        $req = $bdd->prepare("SELECT * FROM subCategory WHERE id = ?");
+        $req = $bdd->prepare("SELECT * FROM subcategory WHERE id = ?");
         $req->execute([$id]);
         $res = $req->fetch();
     }
@@ -63,7 +63,7 @@ class CategoryManager extends Model
     {
         $bdd = $this->getBdd();
 
-        $req = $bdd->prepare("SELECT subCategory.*, category.* FROM subCategory inner join category on subCategory.id_category = category.id where id_category = ?");
+        $req = $bdd->prepare("SELECT subcategory.*, category.* FROM subcategory inner join category on subcategory.id_category = category.id where id_category = ?");
         $req->execute([$id]);    
         $res = $req->fetchAll();
         return $res;
@@ -78,7 +78,7 @@ class CategoryManager extends Model
     {
         $bdd = $this->getBdd();
 
-        $req = $bdd->prepare("SELECT subCategory.*, articles.* FROM articles INNER JOIN subCategory ON articles.id_subCategory = subCategory.id where articles.id_subCategory = ?");
+        $req = $bdd->prepare("SELECT subcategory.*, articles.* FROM articles INNER JOIN subcategory ON articles.id_subcategory = subcategory.id where articles.id_subcategory = ?");
         $req->execute([$id]);    
         $res = $req->fetchAll(\PDO::FETCH_ASSOC);
         return $res;
@@ -93,7 +93,7 @@ class CategoryManager extends Model
     {
         $bdd = $this->getBdd();
 
-        $req = $bdd->prepare("SELECT subCategory.*, articles.* FROM articles INNER JOIN subCategory ON articles.id_subCategory = subCategory.id where articles.id = ?");
+        $req = $bdd->prepare("SELECT subcategory.*, articles.* FROM articles INNER JOIN subcategory ON articles.id_subcategory = subcategory.id where articles.id = ?");
         $req->execute([$id]);    
         $res = $req->fetchAll(\PDO::FETCH_ASSOC);
         return $res;
@@ -143,7 +143,7 @@ class CategoryManager extends Model
     {
         $bdd = $this->getBdd();
 
-        $req = $bdd->prepare("SELECT * FROM subCategory WHERE id = ?");
+        $req = $bdd->prepare("SELECT * FROM subcategory WHERE id = ?");
         $req->execute([$id_sub]);
         $res = $req->fetch();
 
@@ -153,7 +153,7 @@ class CategoryManager extends Model
     {
         $bdd = $this->getBdd();
         
-        $req = $bdd->query('SELECT * FROM subCategory ORDER BY id ASC ');
+        $req = $bdd->query('SELECT * FROM subcategory ORDER BY id ASC ');
         $res = $req->fetchAll();
         
         return $res;

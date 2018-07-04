@@ -121,8 +121,8 @@ endif;
             </div>
             <div class="mask"></div>
             <form class="query" method="post" action="Recherche">
-                <input class="search" type="search" name="query" placeholder="Trouvez..." value="<?php if(isset($_POST[" query
-                        "])) echo $_POST["query "] ?>">
+                <input class="search" type="search" name="query" placeholder="Trouvez ce que vous aimez..." value="<?php if(isset($_POST[" query
+                        "])) echo $_POST["query "] ?>"><i class="fas fa-search"></i>
             </form>
 
     </header>

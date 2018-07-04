@@ -113,6 +113,7 @@ class ControllerCaddie
         $facture = $this->caddie->getFacture($id_membre);
         $nb_articles = $this->caddie->getNbArticles($id_membre);
         $categories = $this->category->getCategories();
+        
         require('views/factureView.php');
     }
     

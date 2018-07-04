@@ -32,7 +32,7 @@
        
         <section id='left'>
 
-                <h1>Imaginez</h1>
+                <h2>Imaginez</h2>
                 <h2>Créez</h2>
                 <h2>Vendez</h2>
                 <p class=""lead>
@@ -41,6 +41,7 @@
 
         </section>
         <section id="right">
+            <h1 class='titre'>Hand Made Shop</h1>
             <img src="public/img/bg.png" alt="Background">
         </section>
 

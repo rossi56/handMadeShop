@@ -80,10 +80,11 @@ class CaddieManager extends Model
     {
       $bdd = $this->getBdd();
 
-      $req = $bdd->prepare('SELECT * FROM paiements where id = ?');
-      $req->execute([$id_membre]);
+      $req = $bdd->prepare('SELECT * FROM paiements where id_membre = ?');
+      $req->execute([$_SESSION['membre']]);
 
-      $res = $req->fetch();
+      $res = $req->fetch(\PDO::FETCH_ASSOC);
+     
       return $res;
     }
    

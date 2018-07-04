@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "PayPalPayment.php";
 
         
@@ -28,11 +29,15 @@ require_once "PayPalPayment.php";
         if ($payment) {
             $paypal_response = $payer->executePayment($paymentID, $payerID);
             $paypal_response = json_decode($paypal_response);
+           
             
-            $update_payment = $bdd->prepare('UPDATE paiements SET payment_status = ?, payer_email = ? WHERE payment_id = ?');
-            $update_payment->execute(array($paypal_response->state, $paypal_response->payer->payer_info->email, $paymentID));
+            $update_payment = $bdd->prepare('UPDATE paiements SET payment_status = ?, payer_email = ?, first_name = ?, last_name = ?, payer_id = ?, id_membre = ? WHERE payment_id = ?');
+            $update_payment->execute(array($paypal_response->state, $paypal_response->payer->payer_info->email,$paypal_response->payer->payer_info->first_name,$paypal_response->payer->payer_info->last_name, $paypal_response->payer->payer_info->payer_id, $_SESSION['membre'], $paymentID));
+               
+                $deleteCaddie = $bdd->prepare("DELETE FROM caddie WHERE id_membre = ?");
+                $deleteCaddie->execute([$_SESSION['membre']]);
            
-           
+               
             if ($paypal_response->state == "approved") {
                 
                 $success = 1;

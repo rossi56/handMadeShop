@@ -86,7 +86,7 @@
 ?>
     </div>
     <hr>
-<section class="caddie">
+<section id='caddie' class="caddie">
 <?php
     if(count($articles)>0) :
 ?>
