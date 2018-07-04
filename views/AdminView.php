@@ -1,22 +1,29 @@
 <?php ob_start() ?>
-<h2>Bonjour "<?= $admin["pseudo"]; ?>", Bienvenue sur votre espace personnel ! </h2>
-<img class="logo" src="public/img/market/logo3.png" alt="logo">
+<h2>Bonjour "<?= $admin["pseudo"]; ?>" <br><br> Bienvenue sur votre espace d'administration ! </h2>
 <section class="compte">
 <div class="articles admin">
  
+<img class="avatar" src="public/img/avatars/<?= $admin["avatar"] ?>" alt="<?= $admin["avatar"] ?>">
    
 <?php
-  if($reports)  :
+  if($reports != null ) :
       
 ?>
    
-    <img class="avatar" src="public/img/avatars/<?= $admin["avatar"] ?>" alt="<?= $admin["avatar"] ?>">
+    
         <div class="signal">
             <i class='fas fa-exclamation-triangle'></i>
             <h2>Commentaire(s) à modérer!</h2>
             
         </div>  
-        
+<?php
+    else :
+?>
+        <div class="signal">
+            <h2>Auncun commentaire à modérer!</h2>
+            
+        </div>  
+
 <?php
     endif;
 ?>

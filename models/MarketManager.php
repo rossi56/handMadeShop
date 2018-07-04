@@ -102,8 +102,8 @@ class MarketManager extends Model
     public function create($image, $description, $name, $id_membre)
     {
         $bdd =$this->getBdd();
-        $post = $bdd->prepare("INSERT INTO market(marketName, marketDescription, imgPres, id_membre) VALUES(:marketName, :marketDescription, :imgPres, :id_membre)");
-            $post->execute([
+        $req = $bdd->prepare("INSERT INTO market(marketName, marketDescription, imgPres, id_membre) VALUES(:marketName, :marketDescription, :imgPres, :id_membre)");
+            $req->execute([
             "marketName" => $name,
             "marketDescription" => nl2br($description),
             "imgPres" => 'logo3.png',
@@ -111,5 +111,25 @@ class MarketManager extends Model
             ]);
         
     }
+    /**
+     * Récupération de la liste des boutiques dans l'espace admin
+     *
+     * @return void
+     */
+    public function getBoutiques()
+    {
+        $bdd =$this->getBdd();
+        $req = $bdd->query("SELECT id, marketDescription, imgPres, id_membre, marketName, DATE_FORMAT (creation, '%d/%m/%Y ') AS creation FROM market ORDER BY id DESC");
+        $res = $req->fetchAll(\PDO::FETCH_ASSOC);
 
+        return $res;
+    }
+
+    public function getVendeur($id)
+    {
+        $bdd = $this->getBdd();
+        $req = $bdd->prepare("SELECT market.*, membres.* FROM market INNER JOIN membres ON market.id_membre = membres.id WHERE membres.id = ?");
+        $req->execute([$id]);
+       
+    }
 }

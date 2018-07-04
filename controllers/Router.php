@@ -388,6 +388,11 @@ class Router {
                     $this->ctrlAdmin->getChapitres();
     
                 }
+                elseif ($_GET['action'] == 'Les-Boutiques') 
+                {
+                    $this->ctrlAdmin->getBoutiques();
+    
+                }
                 
               
                 elseif ($_GET['action'] == 'Modifier-un-chapitre')

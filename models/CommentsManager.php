@@ -108,8 +108,8 @@ class CommentsManager extends Model
         $bdd = $this->getBdd();
         
         $req = $bdd->query("SELECT commentaires.report, commentaires.commentaire,DATE_FORMAT (publication, '%d/%m/%Y ') AS publication, commentaires.id, commentaires.id_article,commentaires.id_chapitre, membres.* FROM commentaires INNER JOIN membres ON commentaires.id_membre = membres.id WHERE report != 0");
-       
-        return $req;
+        $res = $req->fetchAll();
+        return $res;
     }
 
 
@@ -123,7 +123,7 @@ class CommentsManager extends Model
         $bdd = $this->getBdd();
         
         $req = $bdd->prepare("UPDATE commentaires SET report = 0 WHERE id = ?");
-        $req->execute([$_GET['id']]);
+        $req->execute([$id]);
     }
 
     /**

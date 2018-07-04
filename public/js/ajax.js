@@ -2,7 +2,7 @@ var familyName = {
     contentB: ""
 }
 // GET VALUE FROM MODO-FORM
-$('#validNameModo').on('click',function(){
+$('.fa-heart').on('click',function(){
     familyName.contentB = $('#familyNameModo').val();
     var familyString = JSON.stringify(familyName);  
 $.ajax({  

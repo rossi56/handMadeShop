@@ -29,6 +29,8 @@ class ControllerAdmin
     private $articles;
     private $chapitre;
     private $article;
+    private $boutiques;
+    private $deleteComment;
 
     public function __construct()
     {
@@ -37,6 +39,8 @@ class ControllerAdmin
         $this->membres = new MembresManager;
         $this->article = new ArticlesManager;
         $this->caddie = new CaddieManager;
+        $this->market = new MarketManager;
+
 
     }
     
@@ -141,7 +145,7 @@ class ControllerAdmin
     public function validate($id)
     {
         $reports = $this->comments->valideReports($id);
-        header('Location: admin.php?action=admin');
+        header('Location: Administration');
     }
 
     /**
@@ -164,7 +168,7 @@ class ControllerAdmin
      */
     public function deleteComment($id)
     {
-        $erase = $this->admin->eraseComment($id);
+        $deleteComment = $this->admin->eraseComment($id);
         header ('Location: Administration');
     }
 
@@ -205,6 +209,12 @@ class ControllerAdmin
       
     }
 
+    public function getBoutiques()
+    {
+        $boutiques = $this->market->getBoutiques();
+
+        require ('views/marketListView.php');
+    }
         
 
     /**

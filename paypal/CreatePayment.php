@@ -78,7 +78,8 @@ require_once "PayPalPayment.php";
       
             $paypal_response = $payer->createPayment($payment_data);
             $paypal_response = json_decode($paypal_response);
-            
+            var_dump($paypal_response)
+;            
             if (!empty($paypal_response->id)) {
             
                   

@@ -32,9 +32,12 @@
             <ul id="menu">
                 <li> <a  class="hvr-underline-from-center"  href="Blog&page=1">Le Blog</a></li>
                 <li> <a  class="hvr-underline-from-center" href="Articles&page=1">La boutique</a> </li>
-                <li><a  class="hvr-underline-from-center" href="Administration">Administration</a></li>
                 <li><a  class="hvr-underline-from-center" href="Publication">Nouveau chapitre</a></li>
                 <li><a  class="hvr-underline-from-center" href="Edition">Chapitres publiés</a></li>
+                <li><a  class="hvr-underline-from-center" href="Les-Boutiques">Liste des Boutiques</a></li>
+                <li><a class="hvr-underline-from-center" href="Compte-utilisateur">Espace Personnel</a></li>
+                <li><a  class="hvr-underline-from-center" href="Administration">Administration</a></li>
+
             </ul>
         </nav>
           
